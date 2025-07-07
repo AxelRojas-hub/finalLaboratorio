@@ -22,9 +22,9 @@
                 <div class="config-group">
                     <label class="config-label">Cantidad de cartas a utilizar</label>
                     <div id="num-cards-group" class="config-options config-button-group">
-                        <button type="button" class="config-button" data-value="8">8 (Baja)</button>
-                        <button type="button" class="config-button selected" data-value="16">16 (Media)</button>
-                        <button type="button" class="config-button" data-value="32">32 (Alta)</button>
+                        <button type="button" class="config-button" data-value="8">8</button>
+                        <button type="button" class="config-button selected" data-value="16">16</button>
+                        <button type="button" class="config-button" data-value="32">32</button>
                     </div>
                 </div>
                 <div class="config-group">

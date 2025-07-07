@@ -111,7 +111,9 @@
     background: linear-gradient(90deg, var(--arcade-secondary), var(--arcade-primary));
     box-shadow: 0 0 24px var(--arcade-secondary);
 }
-/* Botones arcade tipo toggle para configuración */
+
+
+
 .config-button-group {
     display: flex;
     gap: 1rem;
@@ -139,16 +141,13 @@
     display: inline-block;
 }
 .config-button:hover, .config-button:focus {
-    filter: brightness(1.15);
-    border-color: var(--arcade-secondary);
-    box-shadow: 0 0 10px var(--arcade-secondary);
+    box-shadow: 0 0 12px var(--arcade-secondary);
 }
 .config-button.selected {
     background: white;
     color: var(--arcade-secondary);
     border-color: var(--arcade-secondary);
-    box-shadow: 0 0 10px var(--arcade-secondary);
-    filter: brightness(1.2);
+    text-shadow: none;
 }
 .button-primary.config-play-btn {
     width: 80%;
