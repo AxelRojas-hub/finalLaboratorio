@@ -1,0 +1,105 @@
+main{
+    flex-direction: column;
+}
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+.navBtn{
+    text-decoration: none;
+    font-size: 1.6rem;
+    padding: 0.5rem 1.2rem;
+    border: rgba(255, 255, 255, 0.137) 2px solid;
+    backdrop-filter: blur(5px);
+    background-color: var(--arcade-panel);
+    color: var(--arcade-text);
+    border-radius: var(--arcade-radius);
+    transition: all 0.3s ease;
+}
+.navBtn:hover{
+    border-color: white;
+}
+.players-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+.player-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 300px;
+    max-width: 350px;
+    gap: 1.5rem;
+}
+
+.player1 {
+    --arcade-primary: #00ff66;
+    --arcade-secondary: #008c3a;
+}
+
+.player2 {
+    --arcade-primary: #00bfff;
+    --arcade-secondary: #005a80;
+}
+
+.player1 .player-box,
+.player-box.player1 {
+    border: 2px solid var(--arcade-primary);
+    background: rgba(0, 255, 102, 0.07);
+    color: var(--arcade-primary);
+}
+
+.player2 .player-box,
+.player-box.player2 {
+    border: 2px solid var(--arcade-primary);
+    background: rgba(0, 191, 255, 0.07);
+    color: var(--arcade-primary);
+}
+
+.player-box {
+    width: 100%;
+    border-radius: var(--arcade-radius);
+    padding: 1.5rem 1rem 1.2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.1rem;
+    box-shadow: 0 0 12px var(--arcade-secondary), 0 0 2px #000;
+    background: var(--arcade-panel);
+}
+
+.player-box h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.player-stats {
+    font-size: 1.3rem;
+    color: white;
+    margin-bottom: 0.2rem;
+    text-align: center;
+}
+
+.player-turn {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--arcade-primary);
+    margin-bottom: 0.5rem;
+}
+
+.player2 .player-turn,
+.player-box.player2 .player-turn {
+    color: var(--arcade-primary);
+}
+
+#p2-end-btn,
+#p1-end-btn {
+    background: transparent;
+    text-shadow: none;
+    border-color: var(--arcade-primary);
+}
