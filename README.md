@@ -44,11 +44,11 @@ Este proyecto consiste en el desarrollo de una **aplicación web de un juego de 
 
 ### Entregables
 
-- [ ] Código fuente.
-- [ ] Manual de usuario con capturas.
-- [ ] Lista de páginas web y su función.
-- [ ] Resumen del desarrollo y las tareas realizadas.
-- [ ] Script SQL para crear la base de datos.
+- Código fuente.
+- Manual de usuario con capturas.
+- Lista de páginas web y su función.
+- Resumen del desarrollo y las tareas realizadas.
+- Script SQL para crear la base de datos.
 
 ## 📅 Fechas importantes
 

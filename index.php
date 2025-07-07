@@ -13,6 +13,32 @@
     <header>
         <h1>Juego de memoria</h1>
     </header>
+    <dialog id="registerDialog">
+        <h2>Crea tu cuenta</h2>
+        <h3 id="popupTitle"></h3>
+        <form id="registerForm" onsubmit="registerUser(event)">
+            <label for="user">
+                Usuario
+                <input required type="text" name="user">
+            </label>
+            <label for="password">
+                Contraseña
+                <input required type="password" name="password">
+            </label>
+            <label for="mail">
+                Correo electrónico
+                <input required type="email" name="email">
+            </label>
+            <label for="pais">
+                País
+                <input required type="text" name="pais">
+            </label>
+            <menu>
+                <button id="cancelBtn" type="reset">Cancelar</button>
+                <button id="regBtn" type="submit">Registrarme</button>
+            </menu>
+        </form>
+    </dialog>
     <main>
         <section class="player1">
             <form id="FormPlayer1" class="loginForm" action="">

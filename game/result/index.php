@@ -37,8 +37,8 @@
             </article>
         </section>
         <nav>
-            <a class="navBtn" href="../leader/index.php">Nueva partida</a>
-            <a class="navBtn" href="../../index.php">Volver al inicio</a>
+            <a class="navBtn" href="../leader/">Nueva partida</a>
+            <a class="navBtn" href="../../">Volver al inicio</a>
         </nav>
     </main>
     <footer>
