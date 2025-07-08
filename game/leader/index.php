@@ -20,7 +20,7 @@
             <div class="leader-panels">
                 <section class="player1 leader-panel">
                     <h2>Jugador 1</h2>
-                    <div class="dice-box" id="dice1">6</div>
+                    <div class="dice-box" id="dice1">?</div>
                     <button class="primaryBtn" id="rollBtn1" type="button">Tirar Dado</button>
                 </section>
                 <section class="player2 leader-panel">

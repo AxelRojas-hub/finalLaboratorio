@@ -6,25 +6,25 @@ Este proyecto consiste en el desarrollo de una **aplicación web de un juego de 
 
 ### Autenticación
 
-- [ ] Registro de usuarios (nombre de usuario único, contraseña, email y país).
-- [ ] Inicio de sesión con validación de credenciales.
+- [x] Registro de usuarios (nombre de usuario único, contraseña, email y país).
+- [x] Inicio de sesión con validación de credenciales.
 - [ ] Mensaje de bienvenida con historial entre los dos jugadores.
 
 ### Pre-Partida
 
 - [ ] Sorteo de turno con dado.
 - [ ] Jugador con menor número configura:
-  - [ ] Cantidad de cartas (8, 16 o 32).
-  - [ ] Tipo de cartas (mínimo 3 opciones).
-  - [ ] Tiempo máximo (7, 15, 25 min o sin límite).
+  - Cantidad de cartas (8, 16 o 32).
+  - Tipo de cartas (mínimo 3 opciones).
+  - Tiempo máximo (7, 15, 25 min o sin límite).
 
 ### Dinámica del Juego
 
-- [ ] Mostrar tablero con cartas boca abajo.
 - [ ] Visualización: Nº de partida, aciertos, intentos, reloj, historial.
+- [ ] Mostrar tablero con cartas boca abajo.
 - [ ] Al seleccionar 2 cartas:
-  - [ ] Si coinciden: quedan descubiertas.
-  - [ ] Si no: se ocultan de nuevo.
+  - Si coinciden: quedan descubiertas.
+  - Si no: se ocultan de nuevo.
 - [ ] Turnos alternados; si acierta repite turno.
 - [ ] Límites de intentos según dificultad (20/40/64).
 

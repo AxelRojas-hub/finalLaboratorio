@@ -15,7 +15,6 @@
     </header>
     <dialog id="registerDialog">
         <h2>Crea tu cuenta</h2>
-        <h3 id="popupTitle"></h3>
         <form id="registerForm" onsubmit="registerUser(event)">
             <label for="user">
                 Usuario
@@ -33,16 +32,17 @@
                 País
                 <input required type="text" name="pais">
             </label>
+            <span id="regMessage"></span>
             <menu>
-                <button id="cancelBtn" type="reset">Cancelar</button>
+                <button id="cancelBtn" type="reset">Cerrar</button>
                 <button id="regBtn" type="submit">Registrarme</button>
             </menu>
         </form>
     </dialog>
     <main>
         <section class="player1">
-            <form id="FormPlayer1" class="loginForm" action="">
-                <h2>Jugador 1</h2>
+            <form id="FormPlayer1" class="loginForm" action="" onsubmit="authUser(event)">
+                <h2 id="player1Name">Jugador 1</h2>
                 <label>
                     Ingresa tu nombre de usuario
                     <input type="text" name="username">
@@ -51,13 +51,13 @@
                     Ingresa tu contraseña
                     <input type="password" name="password">
                 </label>
-                <button class="primaryBtn" id="loginBtn1" type="button">Iniciar sesion</button>
+                <button class="primaryBtn" id="loginBtn1" type="submit">Iniciar sesion</button>
                 <a class="registerAnchor">¿No tenes una cuenta? Registráte</a>
             </form>
         </section>
         <section class="player2">
-            <form id="FormPlayer2" class="loginForm" action="">
-                <h2>Jugador 2</h2>
+            <form id="FormPlayer2" class="loginForm" action="" onsubmit="authUser(event)">
+                <h2 id="player2Name">Jugador 2</h2>
                 <label>
                     Ingresa tu nombre de usuario
                     <input type="text" name="username">
@@ -66,7 +66,7 @@
                     Ingresa tu contraseña
                     <input type="password" name="password">
                 </label>
-                <button class="primaryBtn" id="loginBtn2" type="button">Iniciar sesion</button>
+                <button class="primaryBtn" id="loginBtn2" type="submit">Iniciar sesion</button>
                 <a class="registerAnchor">¿No tenes una cuenta? Registráte</a>
             </form>
         </section>
