@@ -16,3 +16,17 @@
 - [x] Limitar la cantidad de chars en registro
 - [x] Determinar que usar para transmitir datos entre modulos (session, cookies, etc)
 - [] Estaría bueno un autocomplete para los paises o un select
+
+### Lider del juego
+
+- [x] Funciónalidad de tirar dados con animación
+- Podria simularla con un setTimeout y un setInterval
+- [x] Considerar empate
+- [x] Setear el ganador en el arreglo de sesiones
+- [x] Redirigir a la vista de configuración /game/config/
+- [] Probar redirecciónar con botones en lugar de hacerlo automaticamente para mejor UX
+
+### Configuración del juego
+
+- [] Setear la configuración en el arreglo de sesiones
+- [] Redirigir a la vista de tablero /game/board/

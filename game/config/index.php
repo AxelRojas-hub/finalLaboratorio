@@ -1,14 +1,33 @@
 <?php
 session_start();
+// Si se recibe el líder por POST, lo guardamos en sesión
+if (isset($_POST['leader'])) {
+    $_SESSION['leader'] = $_POST['leader']; // "player1" o "player2"
+    header('Location: ./'); // Redirige a sí mismo pero ahora con $_SESSION seteado
+    exit();
+}
+
+// Si están logueados pero aún no se definió un líder, redirigimos a /leader
 if (
-    !isset($_SESSION['player1'])
-    && !isset($_SESSION['player2'])
-    // && !isset($_SESSION['gameLeader'])
+    !isset($_SESSION['leader']) &&
+    isset($_SESSION['player1']) &&
+    isset($_SESSION['player2'])
+) {
+    header('Location: ../leader/');
+    exit();
+}
+
+// Si falta cualquiera de los datos, redirige al login
+if (
+    !isset($_SESSION['player1']) ||
+    !isset($_SESSION['player2']) ||
+    !isset($_SESSION['leader'])
 ) {
     header('Location: ../../');
     exit();
 }
-$gameLeader = $_SESSION['gameLeader'] ?? 'player1'; //esto deberia ser player1 o player2
+
+$gameLeader = $_SESSION['leader']; // "player1" o "player2"
 $player1 = $_SESSION['player1'];
 $player2 = $_SESSION['player2'];
 ?>

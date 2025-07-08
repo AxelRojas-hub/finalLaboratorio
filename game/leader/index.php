@@ -16,7 +16,7 @@ $nombrePlayer2 = $_SESSION['player2'];
     <title>Líder del Juego: Tirar Dados</title>
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="./style.css">
-
+    <script src="./script.js" defer></script>
 </head>
 
 <body>
@@ -30,12 +30,12 @@ $nombrePlayer2 = $_SESSION['player2'];
                 <section class="player1 leader-panel">
                     <h2><?php echo $nombrePlayer1; ?></h2>
                     <div class="dice-box" id="dice1">?</div>
-                    <button class="primaryBtn" id="rollBtn1" type="button">Tirar Dado</button>
+                    <button class="primaryBtn" id="rollBtn1" type="button" onclick="rollDice(1)">Tirar Dado</button>
                 </section>
                 <section class="player2 leader-panel">
                     <h2><?php echo $nombrePlayer2; ?></h2>
                     <div class="dice-box" id="dice2">?</div>
-                    <button class="primaryBtn" id="rollBtn2" type="button">Tirar Dado</button>
+                    <button class="primaryBtn" id="rollBtn2" type="button" onclick="rollDice(2)">Tirar Dado</button>
                 </section>
             </div>
             <p class="leader-desc">El número más bajo gana el primer turno y configura el juego.</p>

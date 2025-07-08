@@ -55,10 +55,10 @@
                 </label>
                 <label>
                     Ingresa tu contraseña
-                    <input minlength="6" type="password"
+                    <input minlength="5" type="password"
                         name="password"
                         required
-                        placeholder="Mín. 6 caracteres">
+                        placeholder="Mín. 5 caracteres">
                 </label>
                 <button class="primaryBtn" id="loginBtn1" type="submit">Iniciar sesion</button>
                 <a class="registerAnchor">¿No tenes una cuenta? Registráte</a>
@@ -73,7 +73,7 @@
                 </label>
                 <label>
                     Ingresa tu contraseña
-                    <input minlength="6" type="password" name="password" required placeholder="Mín. 6 caracteres">
+                    <input minlength="5" type="password" name="password" required placeholder="Mín. 5 caracteres">
                 </label>
                 <button class="primaryBtn" id="loginBtn2" type="submit">Iniciar sesion</button>
                 <a class="registerAnchor">¿No tenes una cuenta? Registráte</a>

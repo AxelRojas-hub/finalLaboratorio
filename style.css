@@ -235,7 +235,14 @@ main{
     border: 2px solid var(--arcade-secondary);
     box-shadow: 0 0 18px var(--arcade-secondary), 0 0 2px #000;
 }
-
+.primaryBtn:disabled {
+    background: rgba(107, 107, 107, 0.5);
+    color: rgba(255, 255, 255, 1);
+    border-color: white;
+    text-shadow: none;
+    cursor: not-allowed;
+    box-shadow: none;
+}
 footer {
     text-align: center;
     width: 100%;
