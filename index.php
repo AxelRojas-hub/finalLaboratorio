@@ -15,7 +15,7 @@
     </header>
     <dialog id="registerDialog">
         <h2>Crea tu cuenta</h2>
-        <form id="registerForm" onsubmit="registerUser(event)">
+        <form id="registerForm" onsubmit="createUser(event)">
             <label for="user">
                 Usuario
                 <input required type="text" name="user">
@@ -45,11 +45,20 @@
                 <h2 id="player1Name">Jugador 1</h2>
                 <label>
                     Ingresa tu nombre de usuario
-                    <input type="text" name="username">
+                    <input
+                        maxlength="10"
+                        minlength="4"
+                        type="text"
+                        name="username"
+                        required
+                        placeholder="4-10 caracteres">
                 </label>
                 <label>
                     Ingresa tu contraseña
-                    <input type="password" name="password">
+                    <input minlength="6" type="password"
+                        name="password"
+                        required
+                        placeholder="Mín. 6 caracteres">
                 </label>
                 <button class="primaryBtn" id="loginBtn1" type="submit">Iniciar sesion</button>
                 <a class="registerAnchor">¿No tenes una cuenta? Registráte</a>
@@ -60,11 +69,11 @@
                 <h2 id="player2Name">Jugador 2</h2>
                 <label>
                     Ingresa tu nombre de usuario
-                    <input type="text" name="username">
+                    <input maxlength="10" minlength="4" type="text" name="username" required placeholder="4-10 caracteres">
                 </label>
                 <label>
                     Ingresa tu contraseña
-                    <input type="password" name="password">
+                    <input minlength="6" type="password" name="password" required placeholder="Mín. 6 caracteres">
                 </label>
                 <button class="primaryBtn" id="loginBtn2" type="submit">Iniciar sesion</button>
                 <a class="registerAnchor">¿No tenes una cuenta? Registráte</a>

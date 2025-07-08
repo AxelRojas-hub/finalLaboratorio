@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['player1']) && !isset($_SESSION['player2'])) {
+    header('Location: ../../');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

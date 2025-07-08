@@ -13,7 +13,7 @@ Este proyecto consiste en el desarrollo de una **aplicación web de un juego de 
 ### Pre-Partida
 
 - [ ] Sorteo de turno con dado.
-- [ ] Jugador con menor número configura:
+- [x] Jugador con menor número configura:
   - Cantidad de cartas (8, 16 o 32).
   - Tipo de cartas (mínimo 3 opciones).
   - Tiempo máximo (7, 15, 25 min o sin límite).

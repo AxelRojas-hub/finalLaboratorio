@@ -1,3 +1,17 @@
+<?php
+session_start();
+if (
+    !isset($_SESSION['player1'])
+    && !isset($_SESSION['player2'])
+    // && !isset($_SESSION['gameLeader'])
+) {
+    header('Location: ../../');
+    exit();
+}
+$gameLeader = $_SESSION['gameLeader'] ?? 'player1'; //esto deberia ser player1 o player2
+$player1 = $_SESSION['player1'];
+$player2 = $_SESSION['player2'];
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,7 +28,8 @@
     <header>
         <h1>Juego de memoria</h1>
     </header>
-    <main class="config-main">
+    <!-- En gameLeader tiene la clase con las colores para definir el theme de la config -->
+    <main class="config-main <?php echo $gameLeader; ?>">
         <div class="config-container">
             <h1 class="config-title">Configuración del Juego</h1>
             <p class="config-desc">Jugador 1 es el encargado de configurar el juego.</p>

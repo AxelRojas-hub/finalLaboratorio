@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION['player1']) && !isset($_SESSION['player2'])) {
+    header('Location: ../../');
+    exit();
+}
+$nombrePlayer1 = $_SESSION['player1'];
+$nombrePlayer2 = $_SESSION['player2'];
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -19,12 +28,12 @@
             <h1 class="leader-title">Líder del Juego</h1>
             <div class="leader-panels">
                 <section class="player1 leader-panel">
-                    <h2>Jugador 1</h2>
+                    <h2><?php echo $nombrePlayer1; ?></h2>
                     <div class="dice-box" id="dice1">?</div>
                     <button class="primaryBtn" id="rollBtn1" type="button">Tirar Dado</button>
                 </section>
                 <section class="player2 leader-panel">
-                    <h2>Jugador 2</h2>
+                    <h2><?php echo $nombrePlayer2; ?></h2>
                     <div class="dice-box" id="dice2">?</div>
                     <button class="primaryBtn" id="rollBtn2" type="button">Tirar Dado</button>
                 </section>

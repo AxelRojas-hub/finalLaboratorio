@@ -1,6 +1,7 @@
 const modal = document.getElementById('registerDialog');
 const anchors = document.querySelectorAll('.registerAnchor');
 const registerForm = document.getElementById('registerForm');
+// Variables para controlar el estado de los jugadores
 let player1Ready = false;
 let player2Ready = false;
 
@@ -34,7 +35,7 @@ async function hashPassword(password) {
 
 // Registra un nuevo usuario con los datos del formulario del modal
 // No retorna nada, es disparada con el onsubmit del formulario del modal
-async function registerUser(event) {
+async function createUser(event) {
     event.preventDefault();
     const formData = new FormData(document.getElementById('registerForm'));
     const data = Object.fromEntries(formData);
@@ -44,7 +45,7 @@ async function registerUser(event) {
         const hashedPassword = await hashPassword(data.password);
 
         const req = new XMLHttpRequest();
-        req.open('POST', './handlers/register.php', true);
+        req.open('POST', './handlers/auth.php', true);
         req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
         req.onreadystatechange = () => {
@@ -66,7 +67,7 @@ async function registerUser(event) {
             }
         };
 
-        req.send(`user=${data.user}&password=${hashedPassword}&email=${data.email}&pais=${data.pais}`);
+        req.send(`user=${data.user}&password=${hashedPassword}&email=${data.email}&pais=${data.pais}&action=register`);
     } catch (error) {
         console.error('Error al hashear la contraseña:', error);
         messageSpan.textContent = 'Ocurrió un error al procesar la contraseña';
@@ -95,7 +96,7 @@ async function authUser(event) {
     const data = Object.fromEntries(formData);
     const password = await hashPassword(data.password);
     const req = new XMLHttpRequest();
-    req.open('POST', './handlers/login.php', true);
+    req.open('POST', './handlers/auth.php', true);
     req.onreadystatechange = () => {
         if (req.readyState === 4) {
             if (req.status === 200) {
@@ -112,7 +113,9 @@ async function authUser(event) {
                     // Verifica si ambos jugadores están listos
                     if (player1Ready && player2Ready) {
                         // Redirige a la página del juego
-                        window.location.href = './game/leader/';
+                        setTimeout(() => {
+                            window.location.href = './game/leader/';
+                        }, 1500);
                     }
                 } else {
                     // Error en el login
@@ -123,8 +126,10 @@ async function authUser(event) {
             }
         }
     };
+    // Determina el jugador según el formulario
+    let player = formId === 'FormPlayer1' ? 'player1' : 'player2';
     req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    req.send(`user=${data.username}&password=${password}`);
+    req.send(`user=${data.username}&password=${password}&action=login&player=${player}`);
 }
 
 function main() {
