@@ -1,12 +1,25 @@
 <?php
 session_start();
-if (!isset($_SESSION['player1']) && !isset($_SESSION['player2'])) {
+if (isset($_POST['cardSet']) && isset($_POST['numCards']) && isset($_POST['gameTime'])) {
+    $_SESSION['cardSet'] = $_POST['cardSet'];
+    $_SESSION['numCards'] = $_POST['numCards'];
+    $_SESSION['gameTime'] = $_POST['gameTime'];
+    header('Location: ./');
+    exit();
+}
+//Si no hay players seteados, vuelve al login
+if (!isset($_SESSION['player1']) || !isset($_SESSION['player2'])) {
     header('Location: ../../');
+    exit();
+}
+//Si no hay lider seteado, vuelve a los dados
+if (!isset($_SESSION['leader'])) {
+    header('Location: ../leader/');
     exit();
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -14,15 +27,30 @@ if (!isset($_SESSION['player1']) && !isset($_SESSION['player2'])) {
     <title>Juego de Memoria</title>
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
 </head>
 
-<body>
+<body onload="initTimer()">
     <header>
         <h1>Juego de memoria</h1>
+        <nav>
+            <a id="leaderAnchor" href="../leader/">
+                <img src="../../assets/dice.svg" alt="Icono de dado" class="icon" id="diceIcon">
+                Lider
+            </a>
+            <a id="configAnchor" href="../config/">
+                <img src="../../assets/config.svg" alt="Icono de configuración" class="icon" id="configIcon">
+                Configuración
+            </a>
+            <a id="logoutAnchor" href="../../">
+                <img src="../../assets/exit.svg" alt="Icono de cerrar sesión" class="icon">
+                Cerrar sesión
+            </a>
+        </nav>
     </header>
     <main>
         <div class="game-header">
-            <div class="game-timer">00:00</div>
+            <div class="game-timer"><?php echo $_SESSION['gameTime']; ?></div>
             <div class="game-info">
                 <div>Partido #<span id="partido-num">40</span></div>
                 <div>Record <span id="record">21-19</span></div>
@@ -31,7 +59,7 @@ if (!isset($_SESSION['player1']) && !isset($_SESSION['player2'])) {
         <div class="game-layout">
             <section class="player-panel">
                 <div class="player-box player1">
-                    <h2>Jugador 1</h2>
+                    <h2><?php echo $_SESSION['player1']; ?></h2>
                     <div class="player-stats">
                         <div>Aciertos: <span id="p1-aciertos">0</span></div>
                         <div>Intentos: <span id="p1-intentos">0</span> / 40</div>
@@ -56,7 +84,6 @@ if (!isset($_SESSION['player1']) && !isset($_SESSION['player2'])) {
             </section>
             <section class="game-center">
                 <div class="game-board" id="game-board">
-                    <!-- 16 cards (4x4) -->
                     <div class="card"></div>
                     <div class="card"></div>
                     <div class="card"></div>
@@ -77,7 +104,7 @@ if (!isset($_SESSION['player1']) && !isset($_SESSION['player2'])) {
             </section>
             <section class="player-panel">
                 <div class="player-box player2">
-                    <h2>Jugador 2</h2>
+                    <h2><?php echo $_SESSION['player2']; ?></h2>
                     <div class="player-stats">
                         <div>Aciertos: <span id="p2-aciertos">0</span></div>
                         <div>Intentos: <span id="p2-intentos">0</span> / 40</div>

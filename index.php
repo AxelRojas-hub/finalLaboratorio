@@ -1,3 +1,13 @@
+<?php
+session_start();
+session_unset();
+session_destroy();
+
+// Redirigir al index.php
+// header('Location: ./');
+// exit();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 

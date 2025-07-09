@@ -12,7 +12,7 @@ Este proyecto consiste en el desarrollo de una **aplicación web de un juego de 
 
 ### Pre-Partida
 
-- [ ] Sorteo de turno con dado.
+- [x] Sorteo de turno con dado.
 - [x] Jugador con menor número configura:
   - Cantidad de cartas (8, 16 o 32).
   - Tipo de cartas (mínimo 3 opciones).
@@ -21,7 +21,7 @@ Este proyecto consiste en el desarrollo de una **aplicación web de un juego de 
 ### Dinámica del Juego
 
 - [ ] Visualización: Nº de partida, aciertos, intentos, reloj, historial.
-- [ ] Mostrar tablero con cartas boca abajo.
+- [x] Mostrar tablero con cartas boca abajo.
 - [ ] Al seleccionar 2 cartas:
   - Si coinciden: quedan descubiertas.
   - Si no: se ocultan de nuevo.

@@ -22,6 +22,12 @@ $nombrePlayer2 = $_SESSION['player2'];
 <body>
     <header>
         <h1>Juego de memoria</h1>
+        <nav>
+            <a id="logoutAnchor" href="../../">
+                <img src="../../assets/exit.svg" alt="Icono de cerrar sesión" class="icon">
+                Cerrar sesión
+            </a>
+        </nav>
     </header>
     <main class="leader-main">
         <div class="leader-container">

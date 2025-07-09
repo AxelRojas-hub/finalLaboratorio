@@ -46,13 +46,27 @@ $player2 = $_SESSION['player2'];
 <body>
     <header>
         <h1>Juego de memoria</h1>
+        <nav>
+            <a id="leaderAnchor" href="../leader/">
+                <img src="../../assets/dice.svg" alt="Icono de dado" class="icon" id="diceIcon">
+                Lider
+            </a>
+            <a id="configAnchor" href="./">
+                <img src="../../assets/config.svg" alt="Icono de configuración" class="icon" id="configIcon">
+                Configuración
+            </a>
+            <a id="logoutAnchor" href="../../">
+                <img src="../../assets/exit.svg" alt="Icono de cerrar sesión" class="icon">
+                Cerrar sesión
+            </a>
+        </nav>
     </header>
     <!-- En gameLeader tiene la clase con las colores para definir el theme de la config -->
     <main class="config-main <?php echo $gameLeader; ?>">
         <div class="config-container">
             <h1 class="config-title">Configuración del Juego</h1>
-            <p class="config-desc">Jugador 1 es el encargado de configurar el juego.</p>
-            <form class="config-form">
+            <p class="config-desc"><?php echo $gameLeader == 'player1' ? $player1 : $player2; ?> es el encargado de configurar el juego.</p>
+            <form class="config-form" onsubmit="handleConfig(event)">
                 <div class="config-group">
                     <label class="config-label">Cantidad de cartas a utilizar</label>
                     <div id="num-cards-group" class="config-options config-button-group">
@@ -73,9 +87,9 @@ $player2 = $_SESSION['player2'];
                 <div class="config-group">
                     <label class="config-label">Tiempo máximo de duración de la partida</label>
                     <div id="game-duration-group" class="config-options config-button-group">
-                        <button type="button" class="config-button" data-value="7">7 min</button>
-                        <button type="button" class="config-button selected" data-value="15">15 min</button>
-                        <button type="button" class="config-button" data-value="25">25 min</button>
+                        <button type="button" class="config-button" data-value="7:00">7 min</button>
+                        <button type="button" class="config-button selected" data-value="15:00">15 min</button>
+                        <button type="button" class="config-button" data-value="25:00">25 min</button>
                         <button type="button" class="config-button" data-value="none">Sin tiempo</button>
                     </div>
                 </div>

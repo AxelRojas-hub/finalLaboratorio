@@ -3,6 +3,7 @@ main{
     justify-content: center;
     align-items: center;
 }
+
 .game-header {
     display: flex;
     flex-direction: column;
@@ -35,8 +36,11 @@ main{
     flex-direction: column;
     align-items: center;
     min-width: 300px;
-    max-width: 350px;
+    max-width: 400px;
     gap: 1.5rem;
+}
+.player-panel .primaryBtn{
+    width: 100%;
 }
 .player1 {
     --arcade-primary: #00ff66;
