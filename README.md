@@ -22,15 +22,15 @@ Este proyecto consiste en el desarrollo de una **aplicación web de un juego de 
 
 - [ ] Visualización: Nº de partida, aciertos, intentos, reloj, historial.
 - [x] Mostrar tablero con cartas boca abajo.
-- [ ] Al seleccionar 2 cartas:
+- [x] Al seleccionar 2 cartas:
   - Si coinciden: quedan descubiertas.
   - Si no: se ocultan de nuevo.
-- [ ] Turnos alternados; si acierta repite turno.
-- [ ] Límites de intentos según dificultad (20/40/64).
+- [x] Turnos alternados; si acierta repite turno.
+- [x] Límites de intentos según dificultad (20/40/64).
 
 ### Finalización del juego
 
-- [ ] Gana quien descubra más pares.
+- Gana quien descubra más pares.
 - [ ] Empates y rendiciones consideradas.
 - [ ] Cálculo de puntaje según rendimiento.
 - [ ] Mensajes personalizados según porcentaje de aciertos.

@@ -17,6 +17,24 @@ if (!isset($_SESSION['leader'])) {
     header('Location: ../leader/');
     exit();
 }
+//Setea intentos segun cantidad de cartas/dificultad
+switch ($_SESSION['numCards']) {
+    case 8:
+        $intentos = 20;
+        $filas = 2;
+        break;
+    case 16:
+        $intentos = 40;
+        $filas = 4;
+        break;
+    case 32:
+        $intentos = 64;
+        $filas = 8;
+        break;
+    default:
+        $intentos = 40;
+        break;
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -27,10 +45,17 @@ if (!isset($_SESSION['leader'])) {
     <title>Juego de Memoria</title>
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="./style.css">
+    <script>
+        // Variables de configuración del juego desde PHP
+        const gameConfig = {
+            numCards: <?php echo $_SESSION['numCards']; ?>,
+            cardSet: '<?php echo $_SESSION['cardSet']; ?>'
+        };
+    </script>
     <script src="./script.js" defer></script>
 </head>
 
-<body onload="initTimer()">
+<body onload="initGame()" data-leader="<?php echo $_SESSION['leader']; ?>">
     <header>
         <h1>Juego de memoria</h1>
         <nav>
@@ -62,9 +87,14 @@ if (!isset($_SESSION['leader'])) {
                     <h2><?php echo $_SESSION['player1']; ?></h2>
                     <div class="player-stats">
                         <div>Aciertos: <span id="p1-aciertos">0</span></div>
-                        <div>Intentos: <span id="p1-intentos">0</span> / 40</div>
+                        <div>Intentos: <span id="p1-intentos">0</span>/<?php echo $intentos ?></div>
                     </div>
-                    <div class="player-turn" id="p1-turno">TU TURNO</div>
+                    <div
+                        class="player-turn"
+                        id="p1-turno"
+                        <?php echo $_SESSION['leader'] == "player2" ? 'style=visibility:hidden' : '' ?>>
+                        TU TURNO
+                    </div>
                     <button class="primaryBtn" id="p1-end-btn">Terminar Juego</button>
                 </div>
                 <div class="history-box player1">
@@ -84,22 +114,14 @@ if (!isset($_SESSION['leader'])) {
             </section>
             <section class="game-center">
                 <div class="game-board" id="game-board">
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
+                    <?php
+                    for ($i = 0; $i < $filas; $i++) {
+                        for ($j = 0; $j < 4; $j++) {
+                            $id = ($i * 4) + $j + 1;
+                            echo "<div id='$id' class='card' onclick='handleCardClick(event)'></div>";
+                        }
+                    }
+                    ?>
                 </div>
             </section>
             <section class="player-panel">
@@ -107,9 +129,13 @@ if (!isset($_SESSION['leader'])) {
                     <h2><?php echo $_SESSION['player2']; ?></h2>
                     <div class="player-stats">
                         <div>Aciertos: <span id="p2-aciertos">0</span></div>
-                        <div>Intentos: <span id="p2-intentos">0</span> / 40</div>
+                        <div>Intentos: <span id="p2-intentos">0</span>/<?php echo $intentos ?></div>
                     </div>
-                    <div class="player-turn" id="p2-turno" style="visibility:hidden;">TU TURNO</div>
+                    <div
+                        class="player-turn"
+                        id="p2-turno"
+                        <?php echo $_SESSION['leader'] == "player1" ? "style='visibility:hidden'" : '' ?>>TU TURNO
+                    </div>
                     <button class="primaryBtn" id="p2-end-btn">Terminar Juego</button>
                 </div>
                 <div class="history-box player2">

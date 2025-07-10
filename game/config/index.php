@@ -70,27 +70,27 @@ $player2 = $_SESSION['player2'];
                 <div class="config-group">
                     <label class="config-label">Cantidad de cartas a utilizar</label>
                     <div id="num-cards-group" class="config-options config-button-group">
-                        <button type="button" class="config-button" data-value="8">8</button>
-                        <button type="button" class="config-button selected" data-value="16">16</button>
-                        <button type="button" class="config-button" data-value="32">32</button>
+                        <button type="button" class="config-button" data-value="8">Fácil (8)</button>
+                        <button type="button" class="config-button selected" data-value="16">Intermedio (16)</button>
+                        <button type="button" class="config-button" data-value="32">Dificil (32)</button>
                     </div>
                 </div>
                 <div class="config-group">
                     <label class="config-label">Cartas a utilizar</label>
                     <div id="card-set-group" class="config-options config-button-group">
-                        <button type="button" class="config-button selected" data-value="numeros">Números</button>
-                        <button type="button" class="config-button" data-value="figuras">Figuras</button>
-                        <button type="button" class="config-button" data-value="animales">Animales</button>
-                        <button type="button" class="config-button" data-value="colores">Colores</button>
+                        <button type="button" class="config-button selected" data-value="futbol">Fútbol</button>
+                        <button type="button" class="config-button" data-value="nba">NBA</button>
+                        <button type="button" class="config-button" data-value="juegos">Videojuegos</button>
+                        <button type="button" class="config-button" data-value="emojis">Emojis</button>
                     </div>
                 </div>
                 <div class="config-group">
                     <label class="config-label">Tiempo máximo de duración de la partida</label>
                     <div id="game-duration-group" class="config-options config-button-group">
+                        <button type="button" class="config-button" data-value="none">Sin tiempo</button>
                         <button type="button" class="config-button" data-value="7:00">7 min</button>
                         <button type="button" class="config-button selected" data-value="15:00">15 min</button>
                         <button type="button" class="config-button" data-value="25:00">25 min</button>
-                        <button type="button" class="config-button" data-value="none">Sin tiempo</button>
                     </div>
                 </div>
                 <div class="config-group config-group-final">

@@ -25,7 +25,6 @@
 - [x] Setear el ganador en el arreglo de sesiones
 - [x] Redirigir a la vista de configuración /game/config/
 - [] Mostrar resultados de partidas entre jugadores
-- [] Probar redirecciónar con botones en lugar de hacerlo automaticamente para mejor UX
 
 ### Configuración del juego
 
@@ -35,12 +34,14 @@
 ## Tablero de juego
 
 - [x] Timer variable
-- [] Considerar sin limite de tiempo
 - [x] Agregar link a configuración de juego, al lado de cerrar sesión
-- [] Alternancia de turnos
-- Si acierta sigue
+- [x] 20 intentos para 8 cartas , 40 intentos para 16 cartas, 64 intentos para 32.
+- [x] Considerar sin limite de tiempo
+- [x] El primer turno debe ser del lider del juego
+- [x] Alternancia de turnos
+- [x] Logica de tablero, dar vuelta cartas
+- [x] Considerar que si acierta sigue
 - [] Boton de terminar juego que actualice los datos y rediriga a /result
 - [] Ultimas partidas
 - [] Numero de partida y record entre jugadores
-- [] Logica de tablero, dar vuelta cartas
-- [] 20 intentos para 7 min , 40 intentos para 15, 64 intentos para 25. Sin limite
+- [] Cartas a utilizar, imagenes/emojis
