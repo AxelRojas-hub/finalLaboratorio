@@ -1,4 +1,4 @@
-# 🧠 Juego de la Memoria - Examen Final Integrador
+# 🧠 Juego de Memoria - Examen Final Integrador
 
 Este proyecto consiste en el desarrollo de una **aplicación web de un juego de memoria para dos jugadores**, en el que deberán encontrar pares de cartas iguales en el menor número de intentos o tiempo posible. Es parte del examen final de la asignatura **Laboratorio de Programación y Lenguajes** de la Universidad Nacional de la Patagonia San Juan Bosco.
 
