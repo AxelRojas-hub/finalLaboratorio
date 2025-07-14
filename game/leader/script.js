@@ -26,7 +26,6 @@ function rollDice(playerNumber) {
 // En caso de empate, reinicia los botones y los dados
 // Si hay ganador, llama a setWinner
 function checkWinner() {
-    console.log('Checking winner...');
     const player1Score = parseInt(dicebox1.textContent);
     const player2Score = parseInt(dicebox2.textContent);
     //Numero mas bajo gana

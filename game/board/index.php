@@ -46,7 +46,6 @@ switch ($_SESSION['numCards']) {
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="./style.css">
     <script>
-        // Variables de configuración del juego desde PHP
         const gameConfig = {
             numCards: <?php echo $_SESSION['numCards']; ?>,
             cardSet: '<?php echo $_SESSION['cardSet']; ?>'
@@ -74,6 +73,11 @@ switch ($_SESSION['numCards']) {
         </nav>
     </header>
     <main>
+        <div id="endGameNav" style="display: none;">
+            <h3>Fin del juego</h3>
+            <p>¡Partida guardada!</p>
+            <a id="end-game-anchor" href="../result/">Ver resultados</a>
+        </div>
         <div class="game-header">
             <div class="game-timer"><?php echo $_SESSION['gameTime']; ?></div>
             <div class="game-info">

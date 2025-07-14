@@ -2,10 +2,6 @@
 session_start();
 session_unset();
 session_destroy();
-
-// Redirigir al index.php
-// header('Location: ./');
-// exit();
 ?>
 
 <!DOCTYPE html>
@@ -28,11 +24,11 @@ session_destroy();
         <form id="registerForm" onsubmit="createUser(event)">
             <label for="user">
                 Usuario
-                <input required type="text" name="user">
+                <input required type="text" minlength="4" maxlength="10" placeholder="4-10 caracteres" name="user">
             </label>
             <label for="password">
                 Contraseña
-                <input required type="password" name="password">
+                <input required type="password" minlength="5" placeholder="Mín. 5 caracteres" name="password">
             </label>
             <label for="mail">
                 Correo electrónico
@@ -61,14 +57,14 @@ session_destroy();
                         type="text"
                         name="username"
                         required
-                        placeholder="4-10 caracteres">
+                        placeholder="Ej: Axel">
                 </label>
                 <label>
                     Ingresa tu contraseña
                     <input minlength="5" type="password"
                         name="password"
                         required
-                        placeholder="Mín. 5 caracteres">
+                        placeholder="Ej: 12345">
                 </label>
                 <button class="primaryBtn" id="loginBtn1" type="submit">Iniciar sesion</button>
                 <a class="registerAnchor">¿No tenes una cuenta? Registráte</a>
@@ -79,11 +75,11 @@ session_destroy();
                 <h2 id="player2Name">Jugador 2</h2>
                 <label>
                     Ingresa tu nombre de usuario
-                    <input maxlength="10" minlength="4" type="text" name="username" required placeholder="4-10 caracteres">
+                    <input maxlength="10" minlength="4" type="text" name="username" required placeholder="Ej: Kevin">
                 </label>
                 <label>
                     Ingresa tu contraseña
-                    <input minlength="5" type="password" name="password" required placeholder="Mín. 5 caracteres">
+                    <input minlength="5" type="password" name="password" required placeholder="Ej: 12345">
                 </label>
                 <button class="primaryBtn" id="loginBtn2" type="submit">Iniciar sesion</button>
                 <a class="registerAnchor">¿No tenes una cuenta? Registráte</a>

@@ -85,15 +85,15 @@ nav{
     text-align: center;
 }
 
-.player-turn {
+.player-result {
     font-size: 1.2rem;
     font-weight: bold;
     color: var(--arcade-primary);
     margin-bottom: 0.5rem;
 }
 
-.player2 .player-turn,
-.player-box.player2 .player-turn {
+.player2 .player-result,
+.player-box.player2 .player-result {
     color: var(--arcade-primary);
 }
 

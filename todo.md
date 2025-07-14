@@ -41,7 +41,9 @@
 - [x] Alternancia de turnos
 - [x] Logica de tablero, dar vuelta cartas
 - [x] Considerar que si acierta sigue
-- [] Boton de terminar juego que actualice los datos y rediriga a /result
+- [x] Cartas a utilizar, imagenes/emojis
+- [] Puedo ir persistiendo los datos de la partida en localStorage
+- Si hago esto, en la pantalla de resultados podria sacar toda la data de acá
+- [] Mostrar resultados al final con mensajes personalizados por %
 - [] Ultimas partidas
 - [] Numero de partida y record entre jugadores
-- [] Cartas a utilizar, imagenes/emojis

@@ -46,12 +46,14 @@ function handleCardClick(event) {
     }
 
     // Actualizar cantidad de intentos solo cuando se voltea una carta
-    if (turn == 'player1') {
-        player1Attempts++
-        document.getElementById('p1-intentos').textContent = player1Attempts
-    } else {
-        player2Attempts++
-        document.getElementById('p2-intentos').textContent = player2Attempts
+    if (flippedCards.length === 1) {
+        if (turn == 'player1') {
+            player1Attempts++
+            document.getElementById('p1-intentos').textContent = player1Attempts
+        } else {
+            player2Attempts++
+            document.getElementById('p2-intentos').textContent = player2Attempts
+        }
     }
 }
 
@@ -104,15 +106,13 @@ function checkMatch() {
     const [card1, card2] = flippedCards;
 
     if (card1.dataset.value === card2.dataset.value) {
-        // Es un acierto
         card1.classList.add('matched');
         card2.classList.add('matched');
 
-        // Marcar las cartas con la clase del jugador que acertó
+        // para que tenga el color del jugador que lo acerto
         card1.dataset.matchedBy = turn;
         card2.dataset.matchedBy = turn;
 
-        // Actualizar aciertos
         if (turn === 'player1') {
             player1Hits++;
             document.getElementById('p1-aciertos').textContent = player1Hits;
@@ -157,14 +157,38 @@ function updateUI() {
 }
 
 function checkGameEnd() {
+
     const matchedCards = document.querySelectorAll('.card.matched');
     const totalCards = document.querySelectorAll('.card').length;
-
-    if (matchedCards.length === totalCards) {
-        // Juego terminado
-        setTimeout(() => {
-            alert('juego terminado');
-            //redirigir a la página de resultados y guardar en bd
-        }, 500);
+    let winner;
+    if (player1Hits == player2Hits) {
+        // Empate
+        winner = 'Empate';
+    } else {
+        // No hay empate
+        winner = player1Hits > player2Hits ? 'Jugador 1' : 'Jugador 2';
     }
+    if (matchedCards.length === totalCards) {
+        endGame();
+        // Juego terminado
+        // Aca llamaria a endGame
+        // TIene que guardar el resultado en la base de datos y redirigir a resultados
+    }
+}
+function endGame() {
+    const req = new XMLHttpRequest();
+    // const gameHeader = document.querySelector('.game-header');
+    // const endGameNav = document.getElementById('endGameNav');
+    req.open('POST', '../result/', true);
+    req.onreadystatechange = function () {
+        console.log('readyState:', req.readyState, 'status:', req.status);
+        if (req.readyState === 4) {
+            if (req.status === 200) {
+                console.log('Game result saved successfully.');
+                window.location.href = '../result/';
+            }
+        }
+    }
+    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    req.send(`p1_attempts=${player1Attempts}&p2_attempts=${player2Attempts}&p1_hits=${player1Hits}&p2_hits=${player2Hits}&winner=${turn}`);
 }

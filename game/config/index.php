@@ -79,9 +79,8 @@ $player2 = $_SESSION['player2'];
                     <label class="config-label">Cartas a utilizar</label>
                     <div id="card-set-group" class="config-options config-button-group">
                         <button type="button" class="config-button selected" data-value="futbol">Fútbol</button>
-                        <button type="button" class="config-button" data-value="nba">NBA</button>
-                        <button type="button" class="config-button" data-value="juegos">Videojuegos</button>
-                        <button type="button" class="config-button" data-value="emojis">Emojis</button>
+                        <button type="button" class="config-button" data-value="basquet">Básquet</button>
+                        <button type="button" class="config-button" data-value="juegos">Juegos</button>
                     </div>
                 </div>
                 <div class="config-group">

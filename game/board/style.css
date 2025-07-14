@@ -10,6 +10,46 @@ main{
 footer{
     margin-top: 2rem;
 }
+#endGameNav {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: var(--arcade-panel);
+    border-radius: var(--arcade-radius);
+    border: 2px solid var(--arcade-primary);
+    margin-bottom: 2rem;
+}
+#endGameNav h3 {
+    font-size: 2.5rem;
+    color: var(--arcade-primary);
+    text-shadow: 0 0 8px var(--arcade-secondary);
+    margin-bottom: 0.5rem;
+}
+#end-game-anchor{
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: var(--arcade-radius-sm);
+    background: var(--arcade-panel);
+    text-shadow: none;
+    border-color: white;
+    box-shadow: var(--arcade-secondary) 0 0 8px, var(--arcade-primary) 0 0 2px;
+    transition: all 0.2s ease-in-out;
+    
+}
+#end-game-anchor:hover{
+    box-shadow: var(--arcade-primary) 0 0 12px, var(--arcade-secondary) 0 0 4px;
+}
+
+#end-game-anchor:focus{
+    border-color: unset;
+}
 .game-header {
     display: flex;
     flex-direction: column;
