@@ -45,6 +45,7 @@ $nombrePlayer2 = $_SESSION['player2'];
                 </section>
             </div>
             <p class="leader-desc">El número más bajo gana el primer turno y configura el juego.</p>
+            <p id="leader-result"></p>
         </div>
     </main>
     <footer>

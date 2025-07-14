@@ -41,6 +41,7 @@ function checkWinner() {
         document.getElementById(`rollBtn${2}`).classList.remove('disabled');
         dicebox1.textContent = '?';
         dicebox2.textContent = '?';
+        document.getElementById('leader-result').textContent = '¡Empate! Vuelvan a tirar los dados';
     }
 }
 // Envia el ganador al servidor via POST y redirige a la página de configuración
