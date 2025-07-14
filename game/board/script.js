@@ -189,6 +189,7 @@ function endGame() {
             }
         }
     }
+    let winner = player1Hits > player2Hits ? 'player1' : (player1Hits < player2Hits ? 'player2' : 'draw');
     req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    req.send(`p1_attempts=${player1Attempts}&p2_attempts=${player2Attempts}&p1_hits=${player1Hits}&p2_hits=${player2Hits}&winner=${turn}`);
+    req.send(`p1_attempts=${player1Attempts}&p2_attempts=${player2Attempts}&p1_hits=${player1Hits}&p2_hits=${player2Hits}&winner=${winner}`);
 }

@@ -42,8 +42,7 @@
 - [x] Logica de tablero, dar vuelta cartas
 - [x] Considerar que si acierta sigue
 - [x] Cartas a utilizar, imagenes/emojis
+- [x] Mostrar resultados al final con mensajes personalizados por %
 - [] Puedo ir persistiendo los datos de la partida en localStorage
-- Si hago esto, en la pantalla de resultados podria sacar toda la data de acá
-- [] Mostrar resultados al final con mensajes personalizados por %
 - [] Ultimas partidas
 - [] Numero de partida y record entre jugadores

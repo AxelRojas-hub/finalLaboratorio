@@ -20,7 +20,7 @@ Este proyecto consiste en el desarrollo de una **aplicación web de un juego de 
 
 ### Dinámica del Juego
 
-- [ ] Visualización: Nº de partida, aciertos, intentos, reloj, historial.
+- [x] Visualización: Nº de partida, aciertos, intentos, reloj, historial.
 - [x] Mostrar tablero con cartas boca abajo.
 - [x] Al seleccionar 2 cartas:
   - Si coinciden: quedan descubiertas.
@@ -32,8 +32,8 @@ Este proyecto consiste en el desarrollo de una **aplicación web de un juego de 
 
 - Gana quien descubra más pares.
 - [ ] Empates y rendiciones consideradas.
-- [ ] Cálculo de puntaje según rendimiento.
-- [ ] Mensajes personalizados según porcentaje de aciertos.
+- [x] Cálculo de puntaje según rendimiento.
+- [x] Mensajes personalizados según porcentaje de aciertos.
 - [ ] Penalización si se agota el tiempo.
 
 ### Persistencia de datos

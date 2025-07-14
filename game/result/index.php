@@ -38,9 +38,19 @@ $winner      = $_SESSION['winner'];
     <title>Juego de Memoria</title>
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="./style.css">
+    <script>
+        const gameData = {
+            winner: '<?php echo $winner; ?>',
+            p1_hits: <?php echo $p1_hits; ?>,
+            p2_hits: <?php echo $p2_hits; ?>,
+            p1_attempts: <?php echo $p1_attempts; ?>,
+            p2_attempts: <?php echo $p2_attempts; ?>
+        };
+    </script>
+    <script src="./script.js" defer></script>
 </head>
 
-<body>
+<body onload="updatePlayerResults()">
     <header>
         <h1>Juego de memoria</h1>
     </header>
@@ -55,7 +65,8 @@ $winner      = $_SESSION['winner'];
                         <p>Aciertos: <span id="p1-aciertos"><?php echo $p1_hits; ?></span></p>
                         <p>Intentos: <span id="p1-intentos"><?php echo $p1_attempts; ?></span> / 40</p>
                     </div>
-                    <p class="player-result" id="p1-result">¡GANASTE!</p>
+                    <p class="player-result" id="p1-result">RESULTADO</p>
+                    <span id="p1-message"></span>
                 </div>
             </article>
             <article class="player-panel player2">
@@ -67,7 +78,8 @@ $winner      = $_SESSION['winner'];
                         <div>Aciertos: <span id="p2-aciertos"><?php echo $p2_hits; ?></span></div>
                         <div>Intentos: <span id="p2-intentos"><?php echo $p2_attempts; ?></span> / 40</div>
                     </div>
-                    <p class="player-result" id="p1-result">¡PERDISTE!</p>
+                    <p class="player-result" id="p2-result">RESULTADO</p>
+                    <span id="p2-message"></span>
                 </div>
             </article>
         </section>

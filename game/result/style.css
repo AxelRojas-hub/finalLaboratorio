@@ -23,16 +23,16 @@ nav{
 }
 .players-section{
     display: flex;
-    justify-content: center;
+    width: 100%;
+    justify-content: space-evenly;
     align-items: center;
-    gap: 3rem;
 }
 .player-panel {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 300px;
-    max-width: 350px;
+    max-width: 400px;
+    width: 100%;
     gap: 1.5rem;
 }
 
@@ -62,6 +62,8 @@ nav{
 
 .player-box {
     width: 100%;
+    text-align: center;
+    min-height: 215px;
     border-radius: var(--arcade-radius);
     padding: 1.5rem 1rem 1.2rem 1rem;
     display: flex;
@@ -102,4 +104,8 @@ nav{
     background: transparent;
     text-shadow: none;
     border-color: var(--arcade-primary);
+}
+#p2-message, #p1-message {
+    padding-inline: 1rem;
+    font-size: 1.2rem;
 }
