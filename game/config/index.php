@@ -40,6 +40,7 @@ $player2 = $_SESSION['player2'];
     <title>Configuración del Juego</title>
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="../../assets/brain.svg" type="image/x-icon">
     <script src="./script.js" defer></script>
 </head>
 

@@ -54,7 +54,7 @@ function setWinner(player) {
         if (req.readyState === 4 && req.status === 200) {
             setTimeout(() => {
                 window.location.href = '../config/';
-            }, 2000);
+            }, 1000);
         }
     };
     req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

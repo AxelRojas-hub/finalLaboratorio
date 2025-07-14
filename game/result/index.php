@@ -38,6 +38,7 @@ $winner      = $_SESSION['winner'];
     <title>Juego de Memoria</title>
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="../../assets/brain.svg" type="image/x-icon">
     <script>
         const gameData = {
             winner: '<?php echo $winner; ?>',
@@ -51,7 +52,7 @@ $winner      = $_SESSION['winner'];
 </head>
 
 <body onload="updatePlayerResults()">
-    <header>
+    <header style="justify-content: center; text-align: center;">
         <h1>Juego de memoria</h1>
     </header>
     <main>
@@ -85,7 +86,7 @@ $winner      = $_SESSION['winner'];
         </section>
         <nav>
             <a class="navBtn" href="../leader/">Nueva partida</a>
-            <a class="navBtn" href="../../">Volver al inicio</a>
+            <a class="navBtn" href="../../">Cerrar sesión</a>
         </nav>
     </main>
     <footer>
