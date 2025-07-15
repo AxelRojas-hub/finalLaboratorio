@@ -7,6 +7,7 @@ let toggledCards = [];
 let flippedCards = [];
 let cardValues = [];
 let gameCards = [];
+let winner;
 
 
 function initGame() {
@@ -160,13 +161,12 @@ function checkGameEnd() {
 
     const matchedCards = document.querySelectorAll('.card.matched');
     const totalCards = document.querySelectorAll('.card').length;
-    let winner;
     if (player1Hits == player2Hits) {
         // Empate
-        winner = 'Empate';
+        winner = 'draw';
     } else {
         // No hay empate
-        winner = player1Hits > player2Hits ? 'Jugador 1' : 'Jugador 2';
+        winner = player1Hits > player2Hits ? 'player1' : 'player2';
     }
     if (matchedCards.length === totalCards) {
         endGame();
@@ -177,8 +177,6 @@ function checkGameEnd() {
 }
 function endGame() {
     const req = new XMLHttpRequest();
-    // const gameHeader = document.querySelector('.game-header');
-    // const endGameNav = document.getElementById('endGameNav');
     req.open('POST', '../result/', true);
     req.onreadystatechange = function () {
         console.log('readyState:', req.readyState, 'status:', req.status);
@@ -189,7 +187,26 @@ function endGame() {
             }
         }
     }
-    let winner = player1Hits > player2Hits ? 'player1' : (player1Hits < player2Hits ? 'player2' : 'draw');
+    // Si no hay winner asignado, calcularlo basado en hits
+    if (!winner) {
+        winner = player1Hits > player2Hits ? 'player1' : (player1Hits < player2Hits ? 'player2' : 'draw');
+    }
     req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     req.send(`p1_attempts=${player1Attempts}&p2_attempts=${player2Attempts}&p1_hits=${player1Hits}&p2_hits=${player2Hits}&winner=${winner}`);
+}
+
+function surrender(event) {
+    if (!confirm('¿Estás seguro de que querés terminar el juego?')) {
+        return;
+    }
+
+    const buttonId = event.target.id;
+
+    if (buttonId === 'p1-end-btn') {
+        winner = 'player2';
+    } else if (buttonId === 'p2-end-btn') {
+        winner = 'player1';
+    }
+
+    endGame();
 }

@@ -100,7 +100,7 @@ switch ($_SESSION['numCards']) {
                         <?php echo $_SESSION['leader'] == "player2" ? 'style=visibility:hidden' : '' ?>>
                         TU TURNO
                     </div>
-                    <button class="primaryBtn" id="p1-end-btn">Terminar Juego</button>
+                    <button class="primaryBtn" id="p1-end-btn" onClick="surrender(event)">Terminar Juego</button>
                 </div>
                 <div class="history-box player1">
                     <table class="history-table">
@@ -141,7 +141,7 @@ switch ($_SESSION['numCards']) {
                         id="p2-turno"
                         <?php echo $_SESSION['leader'] == "player1" ? "style='visibility:hidden'" : '' ?>>TU TURNO
                     </div>
-                    <button class="primaryBtn" id="p2-end-btn">Terminar Juego</button>
+                    <button class="primaryBtn" id="p2-end-btn" onClick="surrender(event)">Terminar Juego</button>
                 </div>
                 <div class="history-box player2">
                     <table class="history-table">
