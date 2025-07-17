@@ -10,6 +10,9 @@ main{
 footer{
     margin-top: 2rem;
 }
+td{
+    text-align: center !important;
+}
 #endGameNav {
     display: flex;
     flex-direction: column;

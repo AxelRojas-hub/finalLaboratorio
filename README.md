@@ -31,7 +31,7 @@ Este proyecto consiste en el desarrollo de una **aplicación web de un juego de 
 ### Finalización del juego
 
 - Gana quien descubra más pares.
-- [ ] Empates y rendiciones consideradas.
+- [x] Empates y rendiciones consideradas.
 - [x] Cálculo de puntaje según rendimiento.
 - [x] Mensajes personalizados según porcentaje de aciertos.
 - [ ] Penalización si se agota el tiempo.

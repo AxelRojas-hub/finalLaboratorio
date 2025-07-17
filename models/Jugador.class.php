@@ -1,6 +1,6 @@
 <?php
 
-class Usuario
+class Jugador
 {
     private $db;
 
@@ -76,5 +76,36 @@ class Usuario
             $result->message = 'Error: ' . $e->getMessage();
         }
         return $result;
+    }
+    public function getId($name)
+    {
+        $id = null;
+        $stmt = $this->db->prepare("SELECT id FROM usuarios WHERE nombre_usuario = ?");
+        $stmt->bind_param("s", $name);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows === 1) {
+            $stmt->bind_result($id);
+            $stmt->fetch();
+        }
+
+        $stmt->close();
+        return $id;
+    }
+    public function getLastGames($name, $limit = 6)
+    {
+        $games = [];
+        $stmt = $this->db->prepare("SELECT * FROM partidas WHERE jugador1_id = ? OR jugador2_id = ? ORDER BY fecha DESC LIMIT ?");
+        $stmt->bind_param("ssi", $name, $name, $limit);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        while ($row = $result->fetch_assoc()) {
+            $games[] = $row;
+        }
+
+        $stmt->close();
+        return $games;
     }
 }

@@ -24,7 +24,7 @@
 - [x] Considerar empate
 - [x] Setear el ganador en el arreglo de sesiones
 - [x] Redirigir a la vista de configuración /game/config/
-- [] Mostrar resultados de partidas entre jugadores
+- [x] Mostrar resultados de partidas entre jugadores
 
 ### Configuración del juego
 

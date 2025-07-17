@@ -1,19 +1,19 @@
 <?php
 session_start();
-require_once '../models/Usuario.class.php';
+require_once '../models/Jugador.class.php';
 $con = new mysqli('localhost', 'root', '', 'memoria');
-$usuario = new Usuario($con);
+$jugador = new Jugador($con);
 $action = $_POST['action'] ?? '';
 $user = $_POST['user'] ?? '';
 $password = $_POST['password'] ?? '';
 
 if ($action === 'login') {
     $player = $_POST['player'] ?? '';
-    $result = $usuario->authUser($user, $password, $player);
+    $result = $jugador->authUser($user, $password, $player);
 } elseif ($action === 'register') {
     $email = $_POST['email'] ?? '';
     $pais = $_POST['pais'] ?? '';
-    $result = $usuario->createUser($user, $email, $password, $pais);
+    $result = $jugador->createUser($user, $email, $password, $pais);
 }
 
 $con->close();

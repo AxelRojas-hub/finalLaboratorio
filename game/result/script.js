@@ -66,4 +66,23 @@ function updatePlayerResults() {
     p2Result.textContent = p2ResultText;
     p1Message.textContent = p1PersonalizedMessage;
     p2Message.textContent = p2PersonalizedMessage;
+    saveGameResults();
+}
+
+function saveGameResults() {
+    const { p1_attempts, p2_attempts, p1_hits, p2_hits, winner, tiempo_maximo, difficulty, player1, player2, win_condition } = gameData;
+    const req = new XMLHttpRequest();
+    req.open('POST', '../../handlers/saveGame.php', true);
+    req.onreadystatechange = function () {
+        if (req.readyState === XMLHttpRequest.DONE) {
+            if (req.status === 200) {
+
+                console.log('Resultados del juego guardados correctamente');
+            } else {
+                console.error('Error al guardar los resultados del juego');
+            }
+        }
+    };
+    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    req.send(`p1_attempts=${p1_attempts}&p2_attempts=${p2_attempts}&p1_hits=${p1_hits}&p2_hits=${p2_hits}&winner=${winner}&tiempo_maximo=${tiempo_maximo}&difficulty=${difficulty}&player1=${player1}&player2=${player2}&win_condition=${win_condition}`);
 }

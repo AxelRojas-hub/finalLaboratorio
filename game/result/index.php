@@ -3,16 +3,20 @@ session_start();
 
 // Llega por POST desde board y guardo en sesión 
 if (
-    isset($_POST['p1_attempts'], $_POST['p2_attempts'], $_POST['p1_hits'], $_POST['p2_hits'], $_POST['winner'])
+    isset($_POST['p1_attempts'], $_POST['p2_attempts'], $_POST['p1_hits'], $_POST['p2_hits'], $_POST['winner'], $_POST['tiempo_maximo'], $_POST['difficulty'], $_POST['player1'], $_POST['player2'], $_POST['win_condition'])
 ) {
     $_SESSION['p1_attempts'] = $_POST['p1_attempts'];
     $_SESSION['p2_attempts'] = $_POST['p2_attempts'];
     $_SESSION['p1_hits']     = $_POST['p1_hits'];
     $_SESSION['p2_hits']     = $_POST['p2_hits'];
     $_SESSION['winner']      = $_POST['winner'];
-
-    header('Location: ./');
-    exit;
+    $_SESSION['tiempo_maximo'] = $_POST['tiempo_maximo'];
+    $_SESSION['difficulty'] = $_POST['difficulty'];
+    $_SESSION['player1'] = $_POST['player1'];
+    $_SESSION['player2'] = $_POST['player2'];
+    $_SESSION['win_condition'] = $_POST['win_condition'] ?? 'finished';
+    // header('Location: ./');
+    // exit;
 }
 
 // Si no están las stats, redirige
@@ -27,6 +31,11 @@ $p2_attempts = $_SESSION['p2_attempts'];
 $p1_hits     = $_SESSION['p1_hits'];
 $p2_hits     = $_SESSION['p2_hits'];
 $winner      = $_SESSION['winner'];
+$tiempo_maximo = $_SESSION['tiempo_maximo'];
+$difficulty  = $_SESSION['difficulty'];
+$player1 = $_SESSION['player1'];
+$player2 = $_SESSION['player2'];
+$win_condition = $_SESSION['win_condition'];
 ?>
 
 <!DOCTYPE html>
@@ -41,12 +50,18 @@ $winner      = $_SESSION['winner'];
     <link rel="icon" href="../../assets/brain.svg" type="image/x-icon">
     <script>
         const gameData = {
+            player1: '<?php echo $player1; ?>',
+            player2: '<?php echo $player2; ?>',
             winner: '<?php echo $winner; ?>',
-            p1_hits: <?php echo $p1_hits; ?>,
-            p2_hits: <?php echo $p2_hits; ?>,
-            p1_attempts: <?php echo $p1_attempts; ?>,
-            p2_attempts: <?php echo $p2_attempts; ?>
+            p1_hits: '<?php echo $p1_hits; ?>',
+            p2_hits: '<?php echo $p2_hits; ?>',
+            p1_attempts: '<?php echo $p1_attempts; ?>',
+            p2_attempts: '<?php echo $p2_attempts; ?>',
+            win_condition: '<?php echo $win_condition; ?>',
+            difficulty: '<?php echo $difficulty; ?>',
+            tiempo_maximo: '<?php echo $tiempo_maximo; ?>'
         };
+        console.log('Game Data:', gameData);
     </script>
     <script src="./script.js" defer></script>
 </head>
@@ -60,7 +75,7 @@ $winner      = $_SESSION['winner'];
             <article class="player-panel player1">
                 <div class="player-box">
                     <h2>
-                        <?php echo isset($_SESSION['player1']) ? $_SESSION['player1'] : 'Jugador 1'; ?>
+                        <?php echo $player1 ?>
                     </h2>
                     <div class="player-stats">
                         <p>Aciertos: <span id="p1-aciertos"><?php echo $p1_hits; ?></span></p>
@@ -73,7 +88,7 @@ $winner      = $_SESSION['winner'];
             <article class="player-panel player2">
                 <div class="player-box">
                     <h2>
-                        <?php echo isset($_SESSION['player2']) ? $_SESSION['player2'] : 'Jugador 2'; ?>
+                        <?php echo $player2 ?>
                     </h2>
                     <div class="player-stats">
                         <div>Aciertos: <span id="p2-aciertos"><?php echo $p2_hits; ?></span></div>

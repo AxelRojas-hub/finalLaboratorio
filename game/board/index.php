@@ -21,20 +21,29 @@ if (!isset($_SESSION['leader'])) {
 switch ($_SESSION['numCards']) {
     case 8:
         $intentos = 20;
+        $difficulty = 'facil';
         $filas = 2;
         break;
     case 16:
         $intentos = 40;
+        $difficulty = 'intermedio';
         $filas = 4;
         break;
     case 32:
         $intentos = 64;
+        $difficulty = 'dificil';
         $filas = 8;
         break;
     default:
         $intentos = 40;
         break;
 }
+require_once '../../models/Jugador.class.php';
+$jugador = new Jugador(new mysqli('localhost', 'root', '', 'memoria'));
+$idP1 = $jugador->getId($_SESSION['player1']);
+$idP2 = $jugador->getId($_SESSION['player2']);
+$partidasP1 = $jugador->getLastGames($idP1);
+$partidasP2 = $jugador->getLastGames($idP2);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -49,7 +58,12 @@ switch ($_SESSION['numCards']) {
     <script>
         const gameConfig = {
             numCards: <?php echo $_SESSION['numCards']; ?>,
-            cardSet: '<?php echo $_SESSION['cardSet']; ?>'
+            cardSet: '<?php echo $_SESSION['cardSet']; ?>',
+            gameTime: '<?php echo $_SESSION['gameTime']; ?>',
+            player1: '<?php echo $_SESSION['player1']; ?>',
+            player2: '<?php echo $_SESSION['player2']; ?>',
+            maxAttempts: <?php echo $intentos; ?>,
+            difficulty: '<?php echo $difficulty; ?>'
         };
     </script>
     <script src="./script.js" defer></script>
@@ -106,13 +120,29 @@ switch ($_SESSION['numCards']) {
                     <table class="history-table">
                         <thead>
                             <tr>
-                                <th colspan="2">Últimas 6 Partidas</th>
+                                <th colspan="3">Últimas 6 Partidas</th>
+                            </tr>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Dificultad</th>
+                                <th>Resultado</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            <tr>
-                                <td colspan="2" style="text-align:center;">No hay historial de partidas.</td>
-                            </tr>
+                            <?php if (!empty($partidasP1)): ?>
+                                <?php foreach ($partidasP1 as $partida): ?>
+                                    <tr>
+                                        <td><?php echo date('d-m-Y', strtotime($partida['fecha'])); ?></td>
+                                        <td><?php echo $partida['dificultad']; ?></td>
+                                        <td><?php echo ($partida['ganador_id'] == $idP1 ? 'Victoria' : 'Derrota'); ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="3" style="text-align:center;">No hay historial de partidas.</td>
+                                </tr>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
@@ -147,13 +177,29 @@ switch ($_SESSION['numCards']) {
                     <table class="history-table">
                         <thead>
                             <tr>
-                                <th colspan="2">Últimas 6 Partidas</th>
+                                <th colspan="3">Últimas 6 Partidas</th>
+                            </tr>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Dificultad</th>
+                                <th>Resultado</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td colspan="2" style="text-align:center;">No hay historial de partidas.</td>
-                            </tr>
+                            <?php if (!empty($partidasP2)):
+                                foreach ($partidasP2 as $partida) {
+                                    echo "<tr>
+                                        <td>" . date('d-m-Y', strtotime($partida['fecha'])) . "</td>
+                                        <td>{$partida['dificultad']}</td>
+                                        <td>" . ($partida['ganador_id'] == $idP2 ? 'Victoria' : 'Derrota') . "</td>
+                                        </tr>";
+                                }
+                            else:
+                            ?>
+                                <tr>
+                                    <td colspan="3" style="text-align:center;">No hay historial de partidas.</td>
+                                </tr>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>

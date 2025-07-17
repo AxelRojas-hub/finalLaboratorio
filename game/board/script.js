@@ -1,4 +1,5 @@
 let turn;
+let { player1, player2, difficulty } = gameConfig;
 let player1Attempts = 0;
 let player2Attempts = 0;
 let player1Hits = 0;
@@ -8,6 +9,9 @@ let flippedCards = [];
 let cardValues = [];
 let gameCards = [];
 let winner;
+// Estado del juego
+// ('finished', 'forfeited', 'draw', 'time_expired')
+let winCondition = 'finished'
 
 
 function initGame() {
@@ -27,6 +31,8 @@ function initGame() {
             if (totalSeconds <= 0) {
                 clearInterval(interval);
                 timer.textContent = '00:00';
+                winCondition = 'time_expired';
+                endGame();
                 return;
             }
 
@@ -164,15 +170,14 @@ function checkGameEnd() {
     if (player1Hits == player2Hits) {
         // Empate
         winner = 'draw';
+        winCondition = 'draw';
     } else {
         // No hay empate
         winner = player1Hits > player2Hits ? 'player1' : 'player2';
     }
     if (matchedCards.length === totalCards) {
+        winCondition = 'finished';
         endGame();
-        // Juego terminado
-        // Aca llamaria a endGame
-        // TIene que guardar el resultado en la base de datos y redirigir a resultados
     }
 }
 function endGame() {
@@ -183,16 +188,21 @@ function endGame() {
         if (req.readyState === 4) {
             if (req.status === 200) {
                 console.log('Game result saved successfully.');
+                // Esperar un poco antes de redirigir para asegurar que los datos se guardaron
+                setTimeout(() => {
+                    window.location.href = '../result/';
+                }, 100);
+            } else {
+                console.error('Error saving game results:', req.status);
                 window.location.href = '../result/';
             }
         }
     }
-    // Si no hay winner asignado, calcularlo basado en hits
     if (!winner) {
         winner = player1Hits > player2Hits ? 'player1' : (player1Hits < player2Hits ? 'player2' : 'draw');
     }
     req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    req.send(`p1_attempts=${player1Attempts}&p2_attempts=${player2Attempts}&p1_hits=${player1Hits}&p2_hits=${player2Hits}&winner=${winner}`);
+    req.send(`p1_attempts=${player1Attempts}&p2_attempts=${player2Attempts}&p1_hits=${player1Hits}&p2_hits=${player2Hits}&winner=${winner}&win_condition=${winCondition}&difficulty=${difficulty}&player1=${player1}&player2=${player2}&tiempo_maximo=${gameConfig.gameTime}`);
 }
 
 function surrender(event) {
@@ -201,12 +211,11 @@ function surrender(event) {
     }
 
     const buttonId = event.target.id;
-
+    winCondition = 'forfeited';
     if (buttonId === 'p1-end-btn') {
         winner = 'player2';
     } else if (buttonId === 'p2-end-btn') {
         winner = 'player1';
     }
-
     endGame();
 }
