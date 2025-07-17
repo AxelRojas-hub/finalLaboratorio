@@ -39,11 +39,22 @@ switch ($_SESSION['numCards']) {
         break;
 }
 require_once '../../models/Jugador.class.php';
-$jugador = new Jugador(new mysqli('localhost', 'root', '', 'memoria'));
+require_once '../../models/Juego.class.php';
+$con = new mysqli('localhost', 'root', '', 'memoria');
+$jugador = new Jugador($con);
+$juego = new Juego($con);
 $idP1 = $jugador->getId($_SESSION['player1']);
 $idP2 = $jugador->getId($_SESSION['player2']);
-$partidasP1 = $jugador->getLastGames($idP1);
-$partidasP2 = $jugador->getLastGames($idP2);
+$matchupStats = $juego->getMatchupStatsByIDs($idP1, $idP2);
+
+// Create new connections for additional queries
+$con2 = new mysqli('localhost', 'root', '', 'memoria');
+$jugador2 = new Jugador($con2);
+$partidasP1 = $jugador2->getLastGames($idP1);
+
+$con3 = new mysqli('localhost', 'root', '', 'memoria');
+$jugador3 = new Jugador($con3);
+$partidasP2 = $jugador3->getLastGames($idP2);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -96,8 +107,9 @@ $partidasP2 = $jugador->getLastGames($idP2);
         <div class="game-header">
             <div class="game-timer"><?php echo $_SESSION['gameTime']; ?></div>
             <div class="game-info">
-                <div>Partido #<span id="partido-num">40</span></div>
-                <div>Record <span id="record">21-19</span></div>
+                <div>Partido #<span id="partido-num"><?php echo $matchupStats->total_matches + 1; ?></span></div>
+                <div><?php echo $_SESSION['player1']; ?> <span id="record"><?php echo $matchupStats->winsP1; ?>-<?php echo $matchupStats->winsP2 . ' ' . $_SESSION['player2']; ?></span></div>
+                <div>Empates <span id="ties"><?php echo $matchupStats->total_matches - ($matchupStats->winsP1 + $matchupStats->winsP2); ?></span></div>
             </div>
         </div>
         <div class="game-layout">

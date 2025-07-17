@@ -5,8 +5,8 @@
 - [x] Vista del tablero
 - [x] Vista de resultados
 - [x] Modal para registrarse desde el login
+- [x] Ajustar nombres de clases en game/result y diseñar botones del nav
 - [] Abstraer el header y footer de las vistas para que no se repita en cada una
-- [] Ajustar nombres de clases en game/result y diseñar botones del nav
 
 ## Funciones
 
@@ -43,6 +43,7 @@
 - [x] Considerar que si acierta sigue
 - [x] Cartas a utilizar, imagenes/emojis
 - [x] Mostrar resultados al final con mensajes personalizados por %
+- [x] Ultimas partidas
+- [x] Numero de partida y record entre jugadores
+- [] Considerar penalización si se agota el tiempo
 - [] Puedo ir persistiendo los datos de la partida en localStorage
-- [] Ultimas partidas
-- [] Numero de partida y record entre jugadores
