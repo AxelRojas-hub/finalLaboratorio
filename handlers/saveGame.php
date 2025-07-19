@@ -39,7 +39,6 @@ $ganador_id = $winner == $_POST['player1'] ? $j1_id : ($winner == $_POST['player
 $puntos_j1 = 0;
 $puntos_j2 = 0;
 
-// 2. Lógica de Puntuación y Ganador (sin cambios en la lógica)
 switch ($estado) {
     case 'finished':
         if ($j1_aciertos > $j2_aciertos) {

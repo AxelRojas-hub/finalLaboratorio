@@ -45,5 +45,6 @@
 - [x] Mostrar resultados al final con mensajes personalizados por %
 - [x] Ultimas partidas
 - [x] Numero de partida y record entre jugadores
+- [] Reutilizar la logica del /board/ en /leader/
 - [] Considerar penalización si se agota el tiempo
 - [] Puedo ir persistiendo los datos de la partida en localStorage

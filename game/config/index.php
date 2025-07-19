@@ -88,7 +88,7 @@ $player2 = $_SESSION['player2'];
                     <label class="config-label">Tiempo máximo de duración de la partida</label>
                     <div id="game-duration-group" class="config-options config-button-group">
                         <button type="button" class="config-button" data-value="none">Sin tiempo</button>
-                        <button type="button" class="config-button" data-value="7:00">7 min</button>
+                        <button type="button" class="config-button" data-value="0:10">7 min</button>
                         <button type="button" class="config-button selected" data-value="15:00">15 min</button>
                         <button type="button" class="config-button" data-value="25:00">25 min</button>
                     </div>

@@ -322,7 +322,12 @@ body::before {
     animation: flicker 3s infinite;
     z-index: 1000;
 }
-
+.game-info {
+    font-size: 1.3rem;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 1.2rem;
+}
 @keyframes flicker {
 
     0%,

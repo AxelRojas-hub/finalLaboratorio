@@ -167,6 +167,12 @@ function checkGameEnd() {
 
     const matchedCards = document.querySelectorAll('.card.matched');
     const totalCards = document.querySelectorAll('.card').length;
+
+    if (player1Attempts === gameConfig.maxAttempts && player2Attempts === gameConfig.maxAttempts) {
+        winCondition = 'finished';
+        endGame();
+        return;
+    }
     if (player1Hits == player2Hits) {
         // Empate
         winner = 'draw';
@@ -188,7 +194,6 @@ function endGame() {
         if (req.readyState === 4) {
             if (req.status === 200) {
                 console.log('Game result saved successfully.');
-                // Esperar un poco antes de redirigir para asegurar que los datos se guardaron
                 setTimeout(() => {
                     window.location.href = '../result/';
                 }, 100);
@@ -199,7 +204,14 @@ function endGame() {
         }
     }
     if (!winner) {
-        winner = player1Hits > player2Hits ? 'player1' : (player1Hits < player2Hits ? 'player2' : 'draw');
+        if (player1Hits > player2Hits) {
+            winner = 'player1';
+        } else if (player1Hits < player2Hits) {
+            winner = 'player2';
+        } else {
+            winner = player1Attempts < player2Attempts ? 'player1' :
+                (player1Attempts > player2Attempts ? 'player2' : 'draw');
+        }
     }
     req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     req.send(`p1_attempts=${player1Attempts}&p2_attempts=${player2Attempts}&p1_hits=${player1Hits}&p2_hits=${player2Hits}&winner=${winner}&win_condition=${winCondition}&difficulty=${difficulty}&player1=${player1}&player2=${player2}&tiempo_maximo=${gameConfig.gameTime}`);

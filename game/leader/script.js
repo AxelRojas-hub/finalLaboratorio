@@ -76,7 +76,7 @@ function getLastMatchups() {
             for (match of matchups.games) {
                 if (match.ganador_id === match.jugador1_id) {
                     counter1++;
-                } else {
+                } else if (match.ganador_id === match.jugador2_id) {
                     counter2++;
                 }
             }

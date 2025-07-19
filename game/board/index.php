@@ -47,7 +47,6 @@ $idP1 = $jugador->getId($_SESSION['player1']);
 $idP2 = $jugador->getId($_SESSION['player2']);
 $matchupStats = $juego->getMatchupStatsByIDs($idP1, $idP2);
 
-// Create new connections for additional queries
 $con2 = new mysqli('localhost', 'root', '', 'memoria');
 $jugador2 = new Jugador($con2);
 $partidasP1 = $jugador2->getLastGames($idP1);
@@ -147,7 +146,7 @@ $partidasP2 = $jugador3->getLastGames($idP2);
                                     <tr>
                                         <td><?php echo date('d-m-Y', strtotime($partida['fecha'])); ?></td>
                                         <td><?php echo $partida['dificultad']; ?></td>
-                                        <td><?php echo ($partida['ganador_id'] == $idP1 ? 'Victoria' : 'Derrota'); ?></td>
+                                        <td><?php echo ($partida['ganador_id'] == $idP1 ? 'Victoria' : ($partida['ganador_id'] == $idP2 ? 'Derrota' : 'Empate')); ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php else: ?>
@@ -203,7 +202,7 @@ $partidasP2 = $jugador3->getLastGames($idP2);
                                     echo "<tr>
                                         <td>" . date('d-m-Y', strtotime($partida['fecha'])) . "</td>
                                         <td>{$partida['dificultad']}</td>
-                                        <td>" . ($partida['ganador_id'] == $idP2 ? 'Victoria' : 'Derrota') . "</td>
+                                        <td>" . ($partida['ganador_id'] == $idP2 ? 'Victoria' : ($partida['ganador_id'] == $idP1 ? 'Derrota' : 'Empate')) . "</td>
                                         </tr>";
                                 }
                             else:
