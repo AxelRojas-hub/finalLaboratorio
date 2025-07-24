@@ -54,6 +54,7 @@ $partidasP1 = $jugador2->getLastGames($idP1);
 $con3 = new mysqli('localhost', 'root', '', 'memoria');
 $jugador3 = new Jugador($con3);
 $partidasP2 = $jugador3->getLastGames($idP2);
+include_once '../../components/rankingDialog.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -83,6 +84,7 @@ $partidasP2 = $jugador3->getLastGames($idP2);
     <header>
         <h1>Juego de memoria</h1>
         <nav>
+            <?php renderRankingDialog("../../") ?>
             <a id="leaderAnchor" href="../leader/">
                 <img src="../../assets/dice.svg" alt="Icono de dado" class="icon" id="diceIcon">
                 Lider

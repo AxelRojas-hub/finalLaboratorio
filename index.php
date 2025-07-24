@@ -2,6 +2,7 @@
 session_start();
 session_unset();
 session_destroy();
+include_once './components/rankingDialog.php';
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +20,9 @@ session_destroy();
 <body>
     <header>
         <h1>Juego de memoria</h1>
+        <nav>
+            <?php renderRankingDialog("./") ?>
+        </nav>
     </header>
     <dialog id="registerDialog">
         <h2>Crea tu cuenta</h2>

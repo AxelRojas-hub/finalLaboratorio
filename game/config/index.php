@@ -30,6 +30,7 @@ if (
 $gameLeader = $_SESSION['leader']; // "player1" o "player2"
 $player1 = $_SESSION['player1'];
 $player2 = $_SESSION['player2'];
+include_once '../../components/rankingDialog.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -48,6 +49,7 @@ $player2 = $_SESSION['player2'];
     <header>
         <h1>Juego de memoria</h1>
         <nav>
+            <?php renderRankingDialog("../../") ?>
             <a id="leaderAnchor" href="../leader/">
                 <img src="../../assets/dice.svg" alt="Icono de dado" class="icon" id="diceIcon">
                 Lider

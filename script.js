@@ -22,6 +22,12 @@ function setupModal() {
         modal.removeAttribute('class');
     });
 }
+
+function openRankingDialog(event) {
+    event.preventDefault();
+    document.getElementById('rankingDialog').showModal();
+}
+
 // Hashea la contraseña usando SHA-256
 // Retorna una promesa que resuelve con el hash de la contraseña
 async function hashPassword(password) {

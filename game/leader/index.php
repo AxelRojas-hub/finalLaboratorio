@@ -14,6 +14,7 @@ $juego = new Juego($con);
 $idP1 = $jugador->getId($nombrePlayer1);
 $idP2 = $jugador->getId($nombrePlayer2);
 $matchupStats = $juego->getMatchupStatsByIDs($idP1, $idP2);
+include_once '../../components/rankingDialog.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -32,6 +33,7 @@ $matchupStats = $juego->getMatchupStatsByIDs($idP1, $idP2);
     <header>
         <h1>Juego de memoria</h1>
         <nav>
+            <?php renderRankingDialog("../../") ?>
             <a id="logoutAnchor" href="../../">
                 <img src="../../assets/exit.svg" alt="Icono de cerrar sesión" class="icon">
                 Cerrar sesión
