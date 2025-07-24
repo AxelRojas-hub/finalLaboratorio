@@ -30,7 +30,7 @@ include_once '../../components/rankingDialog.php';
     <script src="./script.js" defer></script>
 </head>
 
-<body onload="getLastMatchups()">
+<body>
     <header>
         <h1>Juego de memoria</h1>
         <nav>

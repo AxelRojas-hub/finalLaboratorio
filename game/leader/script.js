@@ -60,24 +60,3 @@ function setWinner(player) {
     req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     req.send('leader=' + player);
 }
-function getLastMatchups() {
-    const req = new XMLHttpRequest();
-    const player1Name = document.getElementById('player1Name').textContent;
-    const player2Name = document.getElementById('player2Name').textContent;
-    req.open('GET', '../../handlers/lastMatchups.php?player1=' + encodeURIComponent(player1Name) + '&player2=' + encodeURIComponent(player2Name), true);
-    req.onreadystatechange = function () {
-        if (req.readyState === 4 && req.status === 200) {
-            const matchups = JSON.parse(req.responseText);
-            let counter1 = 0;
-            let counter2 = 0;
-            for (match of matchups.games) {
-                if (match.ganador_id === match.jugador1_id) {
-                    counter1++;
-                } else if (match.ganador_id === match.jugador2_id) {
-                    counter2++;
-                }
-            }
-        }
-    };
-    req.send(null);
-}

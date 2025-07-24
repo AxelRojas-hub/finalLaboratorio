@@ -39,8 +39,8 @@ $win_condition = $_SESSION['win_condition'];
 // No interactua con la bd, no hace falta la conexión
 $jugador = new Jugador(null);
 
-$p1_points = $jugador->calculatePoints('player1', $win_condition, $p1_hits, $p2_hits, $p1_attempts, $p2_attempts, $winner, $player1);
-$p2_points = $jugador->calculatePoints('player2', $win_condition, $p2_hits, $p1_hits, $p2_attempts, $p1_attempts, $winner, $player2);
+$p1_points = $jugador->calculatePoints($win_condition, $p1_attempts, $p2_attempts, $winner, $player1);
+$p2_points = $jugador->calculatePoints($win_condition, $p2_attempts, $p1_attempts, $winner, $player2);
 ?>
 
 <!DOCTYPE html>
@@ -105,9 +105,14 @@ $p2_points = $jugador->calculatePoints('player2', $win_condition, $p2_hits, $p1_
                     </div>
                     <p class="player-result" id="p2-result">RESULTADO</p>
                     <span id="p2-message"></span>
-                    <?php if ($p2_points < 0) echo "<p >{$p2_points} puntos</p>";
-                    else
-                        echo "<p>+{$p2_points} puntos</p>"; ?>
+                    <?php
+                    if ($p2_points < 0) {
+                        echo "<p >{$p2_points} puntos</p>";
+                    } else {
+                        echo "<p>+{$p2_points} puntos</p>";
+                    }
+                    ?>
+
                 </div>
             </article>
         </section>

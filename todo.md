@@ -6,7 +6,7 @@
 - [x] Vista de resultados
 - [x] Modal para registrarse desde el login
 - [x] Ajustar nombres de clases en game/result y diseñar botones del nav
-- [] Abstraer el footer de las vistas para que no se repita en cada una
+- [x] Abstraer el footer de las vistas para que no se repita en cada una
 
 ## Funciones
 
