@@ -116,10 +116,8 @@ $p2_points = $jugador->calculatePoints('player2', $win_condition, $p2_hits, $p1_
             <a class="navBtn" href="../../">Cerrar sesión</a>
         </nav>
     </main>
-    <footer>
-        <p>Axel Rojas | UNPSJB</p>
-        <p>Final Regular Laboratorio de programación y Lenguajes</p>
-    </footer>
+    <?php include_once '../../components/gameFooter.php';
+    renderGameFooter(); ?>
 </body>
 
 </html>

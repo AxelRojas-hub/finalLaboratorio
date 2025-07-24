@@ -91,10 +91,8 @@ include_once './components/rankingDialog.php';
             </form>
         </section>
     </main>
-    <footer>
-        <p>Axel Rojas | UNPSJB</p>
-        <p>Final Regular Laboratorio de programación y Lenguajes</p>
-    </footer>
+    <?php include_once './components/gameFooter.php';
+    renderGameFooter(); ?>
 </body>
 
 </html>
