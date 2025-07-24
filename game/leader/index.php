@@ -8,6 +8,7 @@ $nombrePlayer1 = $_SESSION['player1'];
 $nombrePlayer2 = $_SESSION['player2'];
 require_once '../../models/Jugador.class.php';
 require_once '../../models/Juego.class.php';
+require_once '../../components/gameInfo.php';
 $con = new mysqli('localhost', 'root', '', 'memoria');
 $jugador = new Jugador($con);
 $juego = new Juego($con);
@@ -43,11 +44,7 @@ include_once '../../components/rankingDialog.php';
     <main class="leader-main">
         <div class="leader-container">
             <h1 class="leader-title">Líder del Juego</h1>
-            <div class="game-info">
-                <div>Partido #<span id="partido-num"><?php echo $matchupStats->total_matches + 1; ?></span></div>
-                <div><?php echo $_SESSION['player1']; ?> <span id="record"><?php echo $matchupStats->winsP1; ?>-<?php echo $matchupStats->winsP2 . ' ' . $_SESSION['player2']; ?></span></div>
-                <div>Empates <span id="ties"><?php echo $matchupStats->total_matches - ($matchupStats->winsP1 + $matchupStats->winsP2); ?></span></div>
-            </div>
+            <?php renderGameInfo($matchupStats, $_SESSION['player1'], $_SESSION['player2'], false); ?>
             <div class="leader-panels">
                 <section class="player1 leader-panel">
                     <h2 id="player1Name"><?php echo $nombrePlayer1; ?></h2>

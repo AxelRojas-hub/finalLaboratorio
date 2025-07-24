@@ -41,6 +41,7 @@ switch ($_SESSION['numCards']) {
 require_once '../../models/Jugador.class.php';
 require_once '../../models/Juego.class.php';
 require_once '../../components/playerHistory.php';
+require_once '../../components/gameInfo.php';
 $con = new mysqli('localhost', 'root', '', 'memoria');
 $jugador = new Jugador($con);
 $juego = new Juego($con);
@@ -102,12 +103,7 @@ include_once '../../components/rankingDialog.php';
     </header>
     <main>
         <div class="game-header">
-            <div class="game-timer"><?php echo $_SESSION['gameTime']; ?></div>
-            <div class="game-info">
-                <div>Partido #<span id="partido-num"><?php echo $matchupStats->total_matches + 1; ?></span></div>
-                <div><?php echo $_SESSION['player1']; ?> <span id="record"><?php echo $matchupStats->winsP1; ?>-<?php echo $matchupStats->winsP2 . ' ' . $_SESSION['player2']; ?></span></div>
-                <div>Empates <span id="ties"><?php echo $matchupStats->total_matches - ($matchupStats->winsP1 + $matchupStats->winsP2); ?></span></div>
-            </div>
+            <?php renderGameInfo($matchupStats, $_SESSION['player1'], $_SESSION['player2'], true, $_SESSION['gameTime']); ?>
         </div>
         <div class="game-layout">
             <section class="player-panel">
