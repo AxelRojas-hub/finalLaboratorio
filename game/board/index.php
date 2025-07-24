@@ -40,6 +40,7 @@ switch ($_SESSION['numCards']) {
 }
 require_once '../../models/Jugador.class.php';
 require_once '../../models/Juego.class.php';
+require_once '../../components/playerHistory.php';
 $con = new mysqli('localhost', 'root', '', 'memoria');
 $jugador = new Jugador($con);
 $juego = new Juego($con);
@@ -100,11 +101,6 @@ include_once '../../components/rankingDialog.php';
         </nav>
     </header>
     <main>
-        <div id="endGameNav" style="display: none;">
-            <h3>Fin del juego</h3>
-            <p>¡Partida guardada!</p>
-            <a id="end-game-anchor" href="../result/">Ver resultados</a>
-        </div>
         <div class="game-header">
             <div class="game-timer"><?php echo $_SESSION['gameTime']; ?></div>
             <div class="game-info">
@@ -129,36 +125,7 @@ include_once '../../components/rankingDialog.php';
                     </div>
                     <button class="primaryBtn" id="p1-end-btn" onClick="surrender(event)">Terminar Juego</button>
                 </div>
-                <div class="history-box player1">
-                    <table class="history-table">
-                        <thead>
-                            <tr>
-                                <th colspan="3">Últimas 6 Partidas</th>
-                            </tr>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Dificultad</th>
-                                <th>Resultado</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <?php if (!empty($partidasP1)): ?>
-                                <?php foreach ($partidasP1 as $partida): ?>
-                                    <tr>
-                                        <td><?php echo date('d-m-Y', strtotime($partida['fecha'])); ?></td>
-                                        <td><?php echo $partida['dificultad']; ?></td>
-                                        <td><?php echo ($partida['ganador_id'] == $idP1 ? 'Victoria' : ($partida['ganador_id'] == $idP2 ? 'Derrota' : 'Empate')); ?></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            <?php else: ?>
-                                <tr>
-                                    <td colspan="3" style="text-align:center;">No hay historial de partidas.</td>
-                                </tr>
-                            <?php endif; ?>
-                        </tbody>
-                    </table>
-                </div>
+                <?php renderPlayerHistory($partidasP1, 'player1', $idP1, $idP2); ?>
             </section>
             <section class="game-center">
                 <div class="game-board" id="game-board">
@@ -186,36 +153,7 @@ include_once '../../components/rankingDialog.php';
                     </div>
                     <button class="primaryBtn" id="p2-end-btn" onClick="surrender(event)">Terminar Juego</button>
                 </div>
-                <div class="history-box player2">
-                    <table class="history-table">
-                        <thead>
-                            <tr>
-                                <th colspan="3">Últimas 6 Partidas</th>
-                            </tr>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Dificultad</th>
-                                <th>Resultado</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php if (!empty($partidasP2)):
-                                foreach ($partidasP2 as $partida) {
-                                    echo "<tr>
-                                        <td>" . date('d-m-Y', strtotime($partida['fecha'])) . "</td>
-                                        <td>{$partida['dificultad']}</td>
-                                        <td>" . ($partida['ganador_id'] == $idP2 ? 'Victoria' : ($partida['ganador_id'] == $idP1 ? 'Derrota' : 'Empate')) . "</td>
-                                        </tr>";
-                                }
-                            else:
-                            ?>
-                                <tr>
-                                    <td colspan="3" style="text-align:center;">No hay historial de partidas.</td>
-                                </tr>
-                            <?php endif; ?>
-                        </tbody>
-                    </table>
-                </div>
+                <?php renderPlayerHistory($partidasP2, 'player2', $idP2, $idP1); ?>
             </section>
         </div>
     </main>
