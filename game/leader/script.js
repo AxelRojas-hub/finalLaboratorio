@@ -64,13 +64,10 @@ function getLastMatchups() {
     const req = new XMLHttpRequest();
     const player1Name = document.getElementById('player1Name').textContent;
     const player2Name = document.getElementById('player2Name').textContent;
-    const victoryCounter1 = document.getElementById('victoryCounter1');
-    const victoryCounter2 = document.getElementById('victoryCounter2');
     req.open('GET', '../../handlers/lastMatchups.php?player1=' + encodeURIComponent(player1Name) + '&player2=' + encodeURIComponent(player2Name), true);
     req.onreadystatechange = function () {
         if (req.readyState === 4 && req.status === 200) {
             const matchups = JSON.parse(req.responseText);
-            console.log('Last Matchups:', matchups);
             let counter1 = 0;
             let counter2 = 0;
             for (match of matchups.games) {
@@ -80,8 +77,6 @@ function getLastMatchups() {
                     counter2++;
                 }
             }
-            victoryCounter1.textContent = counter1;
-            victoryCounter2.textContent = counter2;
         }
     };
     req.send(null);

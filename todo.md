@@ -6,7 +6,7 @@
 - [x] Vista de resultados
 - [x] Modal para registrarse desde el login
 - [x] Ajustar nombres de clases en game/result y diseñar botones del nav
-- [] Abstraer el header y footer de las vistas para que no se repita en cada una
+- [] Abstraer el footer de las vistas para que no se repita en cada una
 
 ## Funciones
 
@@ -45,6 +45,6 @@
 - [x] Mostrar resultados al final con mensajes personalizados por %
 - [x] Ultimas partidas
 - [x] Numero de partida y record entre jugadores
-- [] Reutilizar la logica del /board/ en /leader/
-- [] Considerar penalización si se agota el tiempo
-- [] Puedo ir persistiendo los datos de la partida en localStorage
+- [x] Reutilizar la logica del /board/ en /leader/
+- [x] Considerar penalización si se agota el tiempo
+- [ ] Puedo ir persistiendo los datos de la partida en localStorage

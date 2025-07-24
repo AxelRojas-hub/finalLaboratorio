@@ -40,7 +40,7 @@ include_once '../../components/rankingDialog.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configuración del Juego</title>
     <link rel="stylesheet" href="../../style.css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./config.css">
     <link rel="icon" href="../../assets/brain.svg" type="image/x-icon">
     <script src="./script.js" defer></script>
 </head>
@@ -90,7 +90,7 @@ include_once '../../components/rankingDialog.php';
                     <label class="config-label">Tiempo máximo de duración de la partida</label>
                     <div id="game-duration-group" class="config-options config-button-group">
                         <button type="button" class="config-button" data-value="none">Sin tiempo</button>
-                        <button type="button" class="config-button" data-value="0:10">7 min</button>
+                        <button type="button" class="config-button" data-value="7:00">7 min</button>
                         <button type="button" class="config-button selected" data-value="15:00">15 min</button>
                         <button type="button" class="config-button" data-value="25:00">25 min</button>
                     </div>

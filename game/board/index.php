@@ -64,8 +64,8 @@ include_once '../../components/rankingDialog.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego de Memoria</title>
     <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="./board.css">
     <link rel="icon" href="../../assets/brain.svg" type="image/x-icon">
-    <link rel="stylesheet" href="./style.css">
     <script>
         const gameConfig = {
             numCards: <?php echo $_SESSION['numCards']; ?>,

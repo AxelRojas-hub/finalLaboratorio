@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once '../../models/Jugador.class.php';
 
 // Llega por POST desde board y guardo en sesión 
 if (
@@ -15,8 +16,6 @@ if (
     $_SESSION['player1'] = $_POST['player1'];
     $_SESSION['player2'] = $_POST['player2'];
     $_SESSION['win_condition'] = $_POST['win_condition'] ?? 'finished';
-    // header('Location: ./');
-    // exit;
 }
 
 // Si no están las stats, redirige
@@ -36,6 +35,12 @@ $difficulty  = $_SESSION['difficulty'];
 $player1 = $_SESSION['player1'];
 $player2 = $_SESSION['player2'];
 $win_condition = $_SESSION['win_condition'];
+
+// No interactua con la bd, no hace falta la conexión
+$jugador = new Jugador(null);
+
+$p1_points = $jugador->calculatePoints('player1', $win_condition, $p1_hits, $p2_hits, $p1_attempts, $p2_attempts, $winner, $player1);
+$p2_points = $jugador->calculatePoints('player2', $win_condition, $p2_hits, $p1_hits, $p2_attempts, $p1_attempts, $winner, $player2);
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +51,7 @@ $win_condition = $_SESSION['win_condition'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego de Memoria</title>
     <link rel="stylesheet" href="../../style.css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./result.css">
     <link rel="icon" href="../../assets/brain.svg" type="image/x-icon">
     <script>
         const gameData = {
@@ -61,7 +66,6 @@ $win_condition = $_SESSION['win_condition'];
             difficulty: '<?php echo $difficulty; ?>',
             tiempo_maximo: '<?php echo $tiempo_maximo; ?>'
         };
-        console.log('Game Data:', gameData);
     </script>
     <script src="./script.js" defer></script>
 </head>
@@ -83,6 +87,11 @@ $win_condition = $_SESSION['win_condition'];
                     </div>
                     <p class="player-result" id="p1-result">RESULTADO</p>
                     <span id="p1-message"></span>
+                    <?php if ($p1_points < 0) {
+                        echo "<p>{$p1_points} puntos</p>";
+                    } else {
+                        echo "<p>+{$p1_points} puntos</p>";
+                    } ?>
                 </div>
             </article>
             <article class="player-panel player2">
@@ -96,6 +105,9 @@ $win_condition = $_SESSION['win_condition'];
                     </div>
                     <p class="player-result" id="p2-result">RESULTADO</p>
                     <span id="p2-message"></span>
+                    <?php if ($p2_points < 0) echo "<p >{$p2_points} puntos</p>";
+                    else
+                        echo "<p>+{$p2_points} puntos</p>"; ?>
                 </div>
             </article>
         </section>

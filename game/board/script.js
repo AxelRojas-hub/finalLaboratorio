@@ -186,23 +186,33 @@ function checkGameEnd() {
         endGame();
     }
 }
-function endGame() {
+
+function saveGameResults() {
+    let winnerName;
+    if (winner === 'player1') {
+        winnerName = player1;
+        console.log('Ganador:', winnerName);
+    } else if (winner === 'player2') {
+        winnerName = player2;
+        console.log('Ganador:', winnerName);
+    } else {
+        winnerName = 'draw';
+    }
+
     const req = new XMLHttpRequest();
-    req.open('POST', '../result/', true);
+    req.open('POST', '../../handlers/saveGame.php', true);
     req.onreadystatechange = function () {
-        console.log('readyState:', req.readyState, 'status:', req.status);
         if (req.readyState === 4) {
             if (req.status === 200) {
-                console.log('Game result saved successfully.');
-                setTimeout(() => {
-                    window.location.href = '../result/';
-                }, 100);
-            } else {
-                console.error('Error saving game results:', req.status);
-                window.location.href = '../result/';
+                console.log('Resultados del juego guardados correctamente');
             }
         }
-    }
+    };
+    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    req.send(`p1_attempts=${player1Attempts}&p2_attempts=${player2Attempts}&p1_hits=${player1Hits}&p2_hits=${player2Hits}&winner=${winnerName}&tiempo_maximo=${gameConfig.gameTime}&difficulty=${difficulty}&player1=${player1}&player2=${player2}&win_condition=${winCondition}`);
+}
+
+function endGame() {
     if (!winner) {
         if (player1Hits > player2Hits) {
             winner = 'player1';
@@ -213,8 +223,33 @@ function endGame() {
                 (player1Attempts > player2Attempts ? 'player2' : 'draw');
         }
     }
+    saveGameResults();
+
+    let winnerNameForResult;
+    if (winner === 'player1') {
+        winnerNameForResult = player1;
+    } else if (winner === 'player2') {
+        winnerNameForResult = player2;
+    } else {
+        winnerNameForResult = 'draw';
+    }
+
+    // Enviar datos a result y redirigir
+    const req = new XMLHttpRequest();
+    req.open('POST', '../result/', true);
+    req.onreadystatechange = function () {
+        if (req.readyState === 4) {
+            if (req.status === 200) {
+                setTimeout(() => {
+                    window.location.href = '../result/';
+                }, 100);
+            } else {
+                window.location.href = '../result/';
+            }
+        }
+    }
     req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    req.send(`p1_attempts=${player1Attempts}&p2_attempts=${player2Attempts}&p1_hits=${player1Hits}&p2_hits=${player2Hits}&winner=${winner}&win_condition=${winCondition}&difficulty=${difficulty}&player1=${player1}&player2=${player2}&tiempo_maximo=${gameConfig.gameTime}`);
+    req.send(`p1_attempts=${player1Attempts}&p2_attempts=${player2Attempts}&p1_hits=${player1Hits}&p2_hits=${player2Hits}&winner=${winnerNameForResult}&win_condition=${winCondition}&difficulty=${difficulty}&player1=${player1}&player2=${player2}&tiempo_maximo=${gameConfig.gameTime}`);
 }
 
 function surrender(event) {

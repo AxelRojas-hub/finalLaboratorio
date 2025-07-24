@@ -34,13 +34,13 @@ Este proyecto consiste en el desarrollo de una **aplicación web de un juego de 
 - [x] Empates y rendiciones consideradas.
 - [x] Cálculo de puntaje según rendimiento.
 - [x] Mensajes personalizados según porcentaje de aciertos.
-- [] Penalización si se agota el tiempo.
+- [x] Penalización si se agota el tiempo.
 
 ### Persistencia de datos
 
 - [x] Guardar partida con datos clave.
 - [x] Mostrar últimas 6 partidas por usuario.
-- [ ] Ranking de mejores partidas.
+- [x] Ranking de mejores partidas.
 
 ### Entregables
 

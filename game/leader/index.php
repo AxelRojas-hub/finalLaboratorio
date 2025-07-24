@@ -24,7 +24,7 @@ include_once '../../components/rankingDialog.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Líder del Juego: Tirar Dados</title>
     <link rel="stylesheet" href="../../style.css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./leader.css">
     <link rel="icon" href="../../assets/brain.svg" type="image/x-icon">
     <script src="./script.js" defer></script>
 </head>
@@ -52,17 +52,13 @@ include_once '../../components/rankingDialog.php';
                 <section class="player1 leader-panel">
                     <h2 id="player1Name"><?php echo $nombrePlayer1; ?></h2>
                     <div class="dice-box" id="dice1">?</div>
-                    <p>Victorias:
-                        <span id="victoryCounter1">0</span>
-                    </p>
+
                     <button class="primaryBtn" id="rollBtn1" type="button" onclick="rollDice(1)">Tirar Dado</button>
                 </section>
                 <section class="player2 leader-panel">
                     <h2 id="player2Name"><?php echo $nombrePlayer2; ?></h2>
                     <div class="dice-box" id="dice2">?</div>
-                    <p>Victorias:
-                        <span id="victoryCounter2">0</span>
-                    </p>
+
                     <button class="primaryBtn" id="rollBtn2" type="button" onclick="rollDice(2)">Tirar Dado</button>
                 </section>
             </div>
