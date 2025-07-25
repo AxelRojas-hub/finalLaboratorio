@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../../models/Jugador.class.php';
+require_once '../../models/Juego.class.php';
 
 // Llega por POST desde board y guardo en sesión 
 if (
@@ -18,7 +19,6 @@ if (
     $_SESSION['win_condition'] = $_POST['win_condition'] ?? 'finished';
 }
 
-// Si no están las stats, redirige
 if (
     !isset($_SESSION['p1_attempts'], $_SESSION['p2_attempts'], $_SESSION['p1_hits'], $_SESSION['p2_hits'], $_SESSION['winner'])
 ) {
@@ -36,11 +36,10 @@ $player1 = $_SESSION['player1'];
 $player2 = $_SESSION['player2'];
 $win_condition = $_SESSION['win_condition'];
 
-// No interactua con la bd, no hace falta la conexión
-$jugador = new Jugador(null);
+$juego = new Juego(null);
 
-$p1_points = $jugador->calculatePoints($win_condition, $p1_attempts, $p2_attempts, $winner, $player1);
-$p2_points = $jugador->calculatePoints($win_condition, $p2_attempts, $p1_attempts, $winner, $player2);
+$p1_points = $juego->calculatePoints($win_condition, $p1_attempts, $p2_attempts, $winner, $player1);
+$p2_points = $juego->calculatePoints($win_condition, $p2_attempts, $p1_attempts, $winner, $player2);
 ?>
 
 <!DOCTYPE html>

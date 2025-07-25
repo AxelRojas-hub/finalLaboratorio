@@ -8,11 +8,13 @@ $nombrePlayer1 = $_SESSION['player1'];
 $nombrePlayer2 = $_SESSION['player2'];
 require_once '../../models/Jugador.class.php';
 require_once '../../models/Juego.class.php';
+require_once '../../models/Estadisticas.class.php';
 require_once '../../components/gameInfo.php';
 require_once '../../components/bestMatchesInfo.php';
 $con = new mysqli('localhost', 'root', '', 'memoria');
 $jugador = new Jugador($con);
 $juego = new Juego($con);
+$estadisticas = new Estadisticas($con);
 $idP1 = $jugador->getId($nombrePlayer1);
 $idP2 = $jugador->getId($nombrePlayer2);
 $matchupStats = $juego->getMatchupStatsByIDs($idP1, $idP2);
@@ -21,8 +23,8 @@ $matchupStats = $juego->getMatchupStatsByIDs($idP1, $idP2);
 $bestMatchP1 = null;
 $bestMatchP2 = null;
 if ($matchupStats->total_matches === 0) {
-    $bestMatchP1 = $jugador->getBestMatch($idP1);
-    $bestMatchP2 = $jugador->getBestMatch($idP2);
+    $bestMatchP1 = $estadisticas->getBestMatch($idP1);
+    $bestMatchP2 = $estadisticas->getBestMatch($idP2);
 }
 
 $con->close();
