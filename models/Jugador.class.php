@@ -164,4 +164,36 @@ class Jugador
 
         return $points;
     }
+
+    public function getMejorPartida($jugadorId)
+    {
+        $query = "SELECT 
+            p.id as partida_id,
+            p.fecha,
+            p.dificultad,
+            ep.puntos_obtenidos,
+            ROUND((ep.aciertos / ep.intentos) * 100, 2) as porcentaje_aciertos,
+            u1.nombre_usuario as oponente
+        FROM estadisticas_partida ep
+        INNER JOIN partidas p ON ep.partida_id = p.id
+        INNER JOIN usuarios u1 ON (
+            CASE 
+                WHEN p.jugador1_id = ? THEN p.jugador2_id
+                ELSE p.jugador1_id
+            END
+        ) = u1.id
+        WHERE ep.usuario_id = ? AND ep.intentos > 0
+        ORDER BY (ep.aciertos / ep.intentos) DESC, ep.puntos_obtenidos DESC
+        LIMIT 1";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $jugadorId, $jugadorId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $mejorPartida = $result->fetch_assoc();
+        $stmt->close();
+
+        return $mejorPartida;
+    }
 }
