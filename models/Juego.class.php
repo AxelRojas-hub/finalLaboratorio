@@ -47,7 +47,6 @@ class Juego
         }
 
         $stmt->close();
-        $this->db->close();
 
         $output->total_matches = count($output->games);
         $output->winsP1        = $winsP1;

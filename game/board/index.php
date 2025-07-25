@@ -42,6 +42,7 @@ require_once '../../models/Jugador.class.php';
 require_once '../../models/Juego.class.php';
 require_once '../../components/playerHistory.php';
 require_once '../../components/gameInfo.php';
+
 $con = new mysqli('localhost', 'root', '', 'memoria');
 $jugador = new Jugador($con);
 $juego = new Juego($con);

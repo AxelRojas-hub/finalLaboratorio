@@ -9,12 +9,24 @@ $nombrePlayer2 = $_SESSION['player2'];
 require_once '../../models/Jugador.class.php';
 require_once '../../models/Juego.class.php';
 require_once '../../components/gameInfo.php';
+require_once '../../components/bestMatchesInfo.php';
 $con = new mysqli('localhost', 'root', '', 'memoria');
 $jugador = new Jugador($con);
 $juego = new Juego($con);
 $idP1 = $jugador->getId($nombrePlayer1);
 $idP2 = $jugador->getId($nombrePlayer2);
 $matchupStats = $juego->getMatchupStatsByIDs($idP1, $idP2);
+
+// Si es la primera partida entre estos jugadores, obtener su mejor partida 
+$bestMatchP1 = null;
+$bestMatchP2 = null;
+if ($matchupStats->total_matches === 0) {
+    $bestMatchP1 = $jugador->getBestMatch($idP1);
+    $bestMatchP2 = $jugador->getBestMatch($idP2);
+}
+
+$con->close();
+
 include_once '../../components/rankingDialog.php';
 ?>
 <!DOCTYPE html>
@@ -44,7 +56,11 @@ include_once '../../components/rankingDialog.php';
     <main class="leader-main">
         <div class="leader-container">
             <h1 class="leader-title">Líder del Juego</h1>
-            <?php renderGameInfo($matchupStats, $_SESSION['player1'], $_SESSION['player2'], false); ?>
+            <?php if ($bestMatchP1 === null && $bestMatchP2 === null): ?>
+                <?php renderGameInfo($matchupStats, $_SESSION['player1'], $_SESSION['player2'], false); ?>
+            <?php else: ?>
+                <?php renderBestMatchesInfo($nombrePlayer1, $nombrePlayer2, $bestMatchP1, $bestMatchP2); ?>
+            <?php endif; ?>
             <div class="leader-panels">
                 <section class="player1 leader-panel">
                     <h2 id="player1Name"><?php echo $nombrePlayer1; ?></h2>

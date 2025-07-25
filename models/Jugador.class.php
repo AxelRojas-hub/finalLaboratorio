@@ -165,11 +165,10 @@ class Jugador
         return $points;
     }
 
-    public function getMejorPartida($jugadorId)
+    public function getBestMatch($jugadorId)
     {
         $query = "SELECT 
             p.id as partida_id,
-            p.fecha,
             p.dificultad,
             ep.puntos_obtenidos,
             ROUND((ep.aciertos / ep.intentos) * 100, 2) as porcentaje_aciertos,
@@ -190,10 +189,8 @@ class Jugador
         $stmt->bind_param("ii", $jugadorId, $jugadorId);
         $stmt->execute();
         $result = $stmt->get_result();
-
-        $mejorPartida = $result->fetch_assoc();
+        $bestMatch = $result->fetch_assoc();
         $stmt->close();
-
-        return $mejorPartida;
+        return $bestMatch;
     }
 }
