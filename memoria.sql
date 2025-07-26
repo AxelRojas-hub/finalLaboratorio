@@ -51,13 +51,6 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   UNIQUE KEY `correo` (`correo`)
 ) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `usuarios` (`id`, `nombre_usuario`, `hash_contraseña`, `correo`, `pais`, `puntaje`) VALUES
-(13, 'Kevin', '$2y$10$.3Ph3YSV4jvM5fSLmfMmHOolfzCYFsuqtZ75xYo/jWsLH0jyVpmpC', 'kevin@gmail.com', 'Argentina', 0),
-(12, 'Axel', '$2y$10$l8WvwUfD0rKev8ul7KYoDuBN/KFpLIKhW.nF7gx67ZpmPtD4Omugm', 'axel@gmail.com', 'Argentina', 0),
-(21, 'nicolas', '$2y$10$IhWnOciaoKXM6b1mJ91gw.l3XfIzM0dbKbLgScvmO98C0rV2mKomu', 'pene@gmail.com', 'argentina', 0),
-(22, 'ana10', '$2y$10$zBA4tJNNIFHv.TdPy2rVFe/n/WxRAcCZdZcLI.UpzSB/GAmQxlUKu', 'ana@mail.com', 'argentina', 0);
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
