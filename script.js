@@ -108,6 +108,12 @@ async function authUser(event) {
             if (req.status === 200) {
                 const response = JSON.parse(req.responseText);
                 if (response.status === 'ok') {
+                    const errorSpan = formId === 'FormPlayer1' ?
+                        document.getElementById('errorP1') :
+                        document.getElementById('errorP2');
+                    errorSpan.style.visibility = 'hidden';
+                    errorSpan.textContent = '';
+
                     disableForm(form);
                     if (formId === 'FormPlayer1') {
                         player1Ready = true;
@@ -128,7 +134,7 @@ async function authUser(event) {
                         document.getElementById('errorP1') :
                         document.getElementById('errorP2');
                     errorSpan.textContent = response.message;
-                    errorSpan.style.display = 'block';
+                    errorSpan.style.visibility = 'visible';
                     console.error('Error en el login:', response.message);
                     form.reset();
                 }

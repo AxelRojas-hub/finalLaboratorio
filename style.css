@@ -314,9 +314,14 @@ footer a:hover{
 
 .error-message {
     color: red;
-    display: none;
-    width: 150px;
+    width: 70%;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
     text-wrap: wrap;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
 }
 
 /* Para sacar los bordes */
