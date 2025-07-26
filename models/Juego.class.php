@@ -47,12 +47,68 @@ class Juego
         }
 
         $stmt->close();
-        $this->db->close();
 
         $output->total_matches = count($output->games);
         $output->winsP1        = $winsP1;
         $output->winsP2        = $winsP2;
 
         return $output;
+    }
+
+    public function calculatePoints($win_condition, $player_attempts, $opponent_attempts, $winner_name = null, $player_name = null)
+    {
+        $points = 0;
+
+        $is_winner = false;
+        if ($winner_name === 'draw') {
+            $is_winner = 'draw';
+        } elseif ($winner_name === $player_name) {
+            $is_winner = true;
+        } else {
+            $is_winner = false;
+        }
+
+        switch ($win_condition) {
+            case 'finished':
+                if ($is_winner === true) {
+                    $points = 14;
+                } elseif ($is_winner === 'draw') {
+                    if ($player_attempts < $opponent_attempts) {
+                        $points = 8;
+                    } elseif ($player_attempts === $opponent_attempts) {
+                        $points = 7;
+                    } else {
+                        $points = 6;
+                    }
+                } else {
+                    // Perdedor
+                    $points = 0;
+                }
+                break;
+
+            case 'time_expired':
+                $points = -4;
+                break;
+
+            case 'max_attempts':
+                if ($is_winner === true) {
+                    $points = 7;
+                } elseif ($is_winner === 'draw') {
+                    $points = 5;
+                } else {
+                    $points = 0;
+                }
+                break;
+
+            case 'forfeited':
+                if ($is_winner === true) {
+                    $points = 3;
+                } else {
+                    $points = 0;
+                }
+                break;
+        }
+
+        return $points;
     }
 }

@@ -68,3 +68,36 @@
     transition: border 0.2s, color 0.2s;
 }
 
+.best-matches {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.best-match-player {
+    flex: 1;
+    background: var(--arcade-panel);
+    border-radius: var(--arcade-radius);
+    border: 2px solid var(--arcade-primary);
+    box-shadow: 0 0 12px var(--arcade-secondary);
+    padding: 1rem;
+    text-align: center;
+    min-height: 120px;
+}
+
+.best-match-player strong {
+    color: var(--arcade-primary);
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.best-match-player div {
+    color: var(--arcade-text);
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+}
+

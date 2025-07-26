@@ -40,22 +40,20 @@ switch ($_SESSION['numCards']) {
 }
 require_once '../../models/Jugador.class.php';
 require_once '../../models/Juego.class.php';
+require_once '../../models/Estadisticas.class.php';
 require_once '../../components/playerHistory.php';
 require_once '../../components/gameInfo.php';
+
 $con = new mysqli('localhost', 'root', '', 'memoria');
 $jugador = new Jugador($con);
 $juego = new Juego($con);
+$estadisticas = new Estadisticas($con);
 $idP1 = $jugador->getId($_SESSION['player1']);
 $idP2 = $jugador->getId($_SESSION['player2']);
 $matchupStats = $juego->getMatchupStatsByIDs($idP1, $idP2);
 
-$con2 = new mysqli('localhost', 'root', '', 'memoria');
-$jugador2 = new Jugador($con2);
-$partidasP1 = $jugador2->getLastGames($idP1);
-
-$con3 = new mysqli('localhost', 'root', '', 'memoria');
-$jugador3 = new Jugador($con3);
-$partidasP2 = $jugador3->getLastGames($idP2);
+$partidasP1 = $estadisticas->getLastGames($idP1);
+$partidasP2 = $estadisticas->getLastGames($idP2);
 include_once '../../components/rankingDialog.php';
 ?>
 <!DOCTYPE html>
