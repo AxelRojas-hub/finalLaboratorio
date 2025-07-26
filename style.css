@@ -301,6 +301,16 @@ footer {
 footer p{
     font-size: 1rem;
 }
+footer a{
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+footer a:hover{
+    color: green;
+}
 /* Para sacar los bordes */
 button:focus {
     outline: none;
