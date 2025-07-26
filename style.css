@@ -311,6 +311,14 @@ footer a{
 footer a:hover{
     color: green;
 }
+
+.error-message {
+    color: red;
+    display: none;
+    width: 150px;
+    text-wrap: wrap;
+}
+
 /* Para sacar los bordes */
 button:focus {
     outline: none;

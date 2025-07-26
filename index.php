@@ -72,6 +72,7 @@ include_once './components/rankingDialog.php';
                         placeholder="Ej: 12345">
                 </label>
                 <button class="primaryBtn" id="loginBtn1" type="submit">Iniciar sesion</button>
+                <span id="errorP1" class="error-message"></span>
                 <a class="registerAnchor">¿No tenes una cuenta? Registráte</a>
             </form>
         </section>
@@ -87,6 +88,7 @@ include_once './components/rankingDialog.php';
                     <input minlength="5" type="password" name="password" required placeholder="Ej: 12345">
                 </label>
                 <button class="primaryBtn" id="loginBtn2" type="submit">Iniciar sesion</button>
+                <span id="errorP2" class="error-message"></span>
                 <a class="registerAnchor">¿No tenes una cuenta? Registráte</a>
             </form>
         </section>

@@ -14,7 +14,7 @@
 
 - [x] Limitar la cantidad de chars en registro
 - [x] Determinar que usar para transmitir datos entre modulos (session, cookies, etc)
-- [] Checkear que el usuario logueado no este logueado ya
+- [x] Checkear que el usuario logueado no este logueado ya
 - [] Estaría bueno un autocomplete para los paises o un select
 
 ### Lider del juego

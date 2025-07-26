@@ -124,8 +124,13 @@ async function authUser(event) {
                         }, 1500);
                     }
                 } else {
-                    // Error en el login
+                    const errorSpan = formId === 'FormPlayer1' ?
+                        document.getElementById('errorP1') :
+                        document.getElementById('errorP2');
+                    errorSpan.textContent = response.message;
+                    errorSpan.style.display = 'block';
                     console.error('Error en el login:', response.message);
+                    form.reset();
                 }
             } else {
                 console.error('Error en la solicitud:', req.statusText);
